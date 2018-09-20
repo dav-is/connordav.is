@@ -111,7 +111,7 @@ export default class Nav extends React.Component {
 
         @media only screen and (max-width: 800px) {
           .component {
-            width: 95%;
+            width: 85%;
           }
         }
 
@@ -121,13 +121,13 @@ export default class Nav extends React.Component {
 
         .component.swipe-left-in.delay {
           animation-delay: .7s;
-          transform: translateX(-4vw) scale(0.95);
+          transform: translateX(-80px) scale(0.95);
             opacity: 0;
         }
 
         @keyframes swipe-left {
           0% {
-            transform: translateX(-4vw) scale(0.95);
+            transform: translateX(-80px) scale(0.95);
             opacity: 0;
           }
           100% {

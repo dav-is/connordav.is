@@ -53,6 +53,12 @@ const Index = (props) => <Layout>
       flex: 2;
     }
 
+    @media only screen and (max-width: 800px) {
+      .doubleSpacer {
+        flex: 1;
+      }
+    }
+
     h1 {
       text-align: center;
       color: white;

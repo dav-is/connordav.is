@@ -1,6 +1,5 @@
 import React from 'react'
 import Router from 'next/router'
-import getElementAbsolutePos from '../helpers/getElementAbsolutePos'
 
 export default class Card extends React.Component {
   constructor(props) {
@@ -8,6 +7,7 @@ export default class Card extends React.Component {
 
     this.card = React.createRef();
     this.hiddenCard = React.createRef();
+    this.boundingCard = React.createRef();
   }
 
   handleClick(location) {
@@ -17,18 +17,21 @@ export default class Card extends React.Component {
 
       this.card.current.style.transition = 'none'
       const card = this.card.current.getBoundingClientRect()
+      const bounding = this.boundingCard.current.getBoundingClientRect()
 
+      this.hiddenCard.current.style.transitionDuration = '0s'
       this.hiddenCard.current.style.top = `${card.y}px`
-      this.hiddenCard.current.style.bottom = `${card.y}px`
+      this.hiddenCard.current.style.height = `${card.height - (bounding.height)}px`
       this.hiddenCard.current.style.right = `${card.x}px`
       this.hiddenCard.current.style.left = `${card.x}px`
+      this.hiddenCard.current.style.transitionDuration = '.7s'
 
       this.hiddenCard.current.style.display = 'flex'
       this.card.current.style.opacity = '0'
 
       setTimeout(() => this.hiddenCard.current.classList.add("explode"), 5)
 
-      setTimeout(() => Router.push(location), 750);
+      setTimeout(() => Router.push(location), 1000);
     }
   }
 
@@ -41,6 +44,8 @@ export default class Card extends React.Component {
       <div className='card background-color hidden' ref={this.hiddenCard}>
         <h3>{ this.props.title }</h3>
         <p>{ this.props.children }</p>
+      </div>
+      <div className='card hidden bounding' ref={this.boundingCard}>
       </div>
       <style jsx>{`
         .card {
@@ -58,15 +63,20 @@ export default class Card extends React.Component {
           cursor: default;
           display: none;
           position: absolute;
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 10px 0px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
         }
 
+        .card.bounding {
+          display: block;
+          opacity: 0;
+        }
+
         .card.hidden.explode {
-          top: 20px !important;
-          bottom: 20px !important;
-          left: 20px !important;
-          right: 20px !important;
+          top: 1.5vh !important;
+          left: 1.5vh !important;
+          right: 1.5vh !important;
+          height: 93.5vh !important;
         }
 
         .card.hidden.explode h3 {
@@ -84,7 +94,7 @@ export default class Card extends React.Component {
         }
 
         .card:hover {
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 10px 0px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           transform: translateY(-5px);
         }
 
