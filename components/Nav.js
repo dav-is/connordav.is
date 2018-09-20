@@ -226,6 +226,12 @@ export default class Nav extends React.Component {
           -webkit-flex: 1 1 50%;
           flex: 1 1 0%;
         }
+
+        @media screen and (max-width: 800px) {
+          .nav > .pseudo {
+            flex-grow: 1; /* Mobile devices are not very good at rendering the flexbox nav when tightly packed */
+          }
+        }
       
         .option {
           transition: 1s;
@@ -244,7 +250,7 @@ export default class Nav extends React.Component {
           text-decoration: none;
           color: rgba(255,255,255,0.6);
           font-family: 'Kanit', sans-serif;
-          font-size: 3vh;
+          font-size: 2.5vh;
         }
       
         .option > a:link {

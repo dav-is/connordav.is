@@ -26,10 +26,10 @@ export default () => <Layout>
       left: 1.5vh;
       top: 1.5vh;
       right: 1.5vh;
-      height: 93.5vh;
+      height: 93vh;
       color: white;
       border: 1px solid #FFF;
-      padding: 1vh 2vh;
+      padding: 2vh 4vh;
       border-radius: 10px;
       transition: .2s ease;
       display: flex;
@@ -41,17 +41,18 @@ export default () => <Layout>
       font-weight: normal;
       font-family: 'Kanit', sans-serif;
       font-size: 6vh;
-      margin: 10px 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .border p {
       font-family: 'Open Sans', sans-serif;
       font-size: 2.5vh;
-      margin: 0 20px;
+      margin-top: 0;
     }
 
     .border p.animate {
-      margin-top: 20px;
+      margin-top: 10px;
       opacity: 0;
       transform: translateY(80px) scale(0.95);
       animation: .7s slideIn cubic-bezier(0.65, 0.05, 0.36, 1) 0s forwards;

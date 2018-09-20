@@ -76,17 +76,18 @@ export default class Card extends React.Component {
           top: 1.5vh !important;
           left: 1.5vh !important;
           right: 1.5vh !important;
-          height: 93.5vh !important;
+          height: 93vh !important;
+          padding: 2vh 4vh;
         }
 
         .card.hidden.explode h3 {
           font-size: 6vh;
-          margin: 10px 20px;
+          margin-top: 10px;
+          margin-bottom: 10px;
         }
 
         .card.hidden.explode p {
           font-size: 2.5vh;
-          margin: 0 20px;
         }
 
         .card.hidden:hover {
@@ -104,14 +105,14 @@ export default class Card extends React.Component {
           font-size: 3vh;
           margin-top: 5px;
           margin-bottom: 0;
-          transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
+          transition: .7s;
         }
 
         .card > p {
           margin-top: 0;
           font-family: 'Open Sans', sans-serif;
           font-size: 2vh;
-          transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
+          transition: .7s;
         }
       `}</style>
     </div>
