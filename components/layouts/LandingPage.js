@@ -31,6 +31,7 @@ export default (props) => <div className='background background-color'>
       bottom: 0;
       right: 0;
       overflow: hidden;
+      transition: 1s;
     }
   `}</style>
 </div>

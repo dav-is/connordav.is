@@ -1,7 +1,10 @@
 import Layout from '../components/Layout'
-import Projects from '../components/Projects'
-import About from '../components/About'
+import Origin from '../components/subsections/Origin'
+import Projects from '../components/subsections/Projects'
+import OpenSource from '../components/subsections/OpenSource'
+import Art from '../components/subsections/Art'
 import Nav from '../components/Nav'
+import { backgrounds } from '../helpers/constants'
 
 const Index = (props) => <Layout>
   <div className='container'>
@@ -13,24 +16,28 @@ const Index = (props) => <Layout>
     <div className='spacer'></div>
     <Nav selectedOption={ props.selectedOption ? props.selectedOption : 'projects' } options={[
       {
-        title: 'One',
-        href: 'one',
-        component: About
+        title: 'Origin',
+        href: 'origin',
+        background: backgrounds.red,
+        component: Origin
       },
       {
         title: 'Projects',
         href: 'projects',
+        background: backgrounds.purple,
         component: Projects
       },
       {
-        title: 'Two',
-        href: 'two',
-        component: About
+        title: 'Open Source',
+        href: 'open-source',
+        background: backgrounds.blue,
+        component: OpenSource
       },
       {
-        title: 'Three',
-        href: 'three',
-        component: About
+        title: 'Art',
+        href: 'art',
+        background: backgrounds.green,
+        component: Art
       },
     ]} />
     <div className='doubleSpacer'></div>

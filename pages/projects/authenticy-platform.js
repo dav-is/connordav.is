@@ -1,9 +1,17 @@
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout"
+import CardController, { CardTemplate } from "../../components/Card"
 
+const link = '/projects/authenticy-platform'
+const Header = (props) => <CardTemplate
+  title="Authenticy Platform"
+  body="This is a test"
+  isLarge={props.isLarge}
+/>
+
+export const Card = () => <CardController location={ link } body={ Header } />
 export default () => <Layout>
   <div className='border'>
-    <h3>Project 1</h3>
-    <p>Here's some text.</p>
+    <Header isLarge/>
     <p className='animate'>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Phasellus sapien mi, dignissim vel condimentum eu, auctor id erat.

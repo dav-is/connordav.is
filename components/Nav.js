@@ -36,6 +36,8 @@ export default class Nav extends React.Component {
       const currentOption = this.props.options.find(option => option.href === name)
       const movingLeft = this.getIndex(currentOption.href) > this.getIndex(this.state.currentOption.href) ? true : false
 
+      document.getElementsByClassName('background')[0].style.background = this.state.currentOption.background
+
       Router.push({
         pathname: '/',
         query: { selectedOption: currentOption.href }
