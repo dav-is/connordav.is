@@ -9,9 +9,9 @@
     "lint": "flow && eslint ./ *.js",
     "lint-fix": "eslint ./ *.js --fix",
     "test": "npm run lint",
-    "build": "npm run export",
-    "export": "npm run build && next export",
-    "deploy": "npm run export && cd out && now --public -n personal"
+    "build": "next build",
+    "export": "npm run build && next export -o /public",
+    "deploy": "npm run export && now"
   },
   "dependencies": {
     "next": "^7.0.1",
