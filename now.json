@@ -1,6 +1,5 @@
 {
   "name": "personal",
-  "type": "static",
   "public": true,
   "alias": ["www.connordav.is"]
 }
