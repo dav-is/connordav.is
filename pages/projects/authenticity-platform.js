@@ -3,6 +3,7 @@ import * as React from 'react'
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
+import { background } from '../../subsections/Projects'
 
 export const header = (expanded: bool) => <CardHeader
   isLarge={expanded}
@@ -11,7 +12,7 @@ export const header = (expanded: bool) => <CardHeader
   Here's some text!
 </CardHeader>
 
-export default () => <Layout>
+export default () => <Layout background={background}>
   <ExpandedCard header={header}>
     <div>
       <p className='animate'>

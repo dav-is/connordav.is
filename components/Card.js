@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import Router from 'next/router'
+import { BackgroundContext } from '../helpers/context'
 
 type Props = {
   expanded?: bool,
@@ -66,9 +67,11 @@ class Card extends React.Component<Props, State> {
         { this.props.children }
       </div>
       { !this.props.expanded && <>
-        <div className='card background-color hidden' ref={this.hiddenCard}>
-          { this.props.header(this.state.expanding) }
-        </div>
+        <BackgroundContext.Consumer>
+          {(key) => <div className={`card background-color-${key} hidden`} ref={this.hiddenCard}>
+            { this.props.header(this.state.expanding) }
+          </div>}
+        </BackgroundContext.Consumer>
         <div className='card hidden bounding' ref={this.boundingCard} />
       </>}
       <style jsx>{`

@@ -1,37 +1,36 @@
 // @flow
 import * as React from 'react'
 import Layout from '../components/Layout'
-import Origin from '../subsections/Origin'
-import Projects from '../subsections/Projects'
-import OpenSource from '../subsections/OpenSource'
-import Art from '../subsections/Art'
+import Origin, { background as OriginBackground } from '../subsections/Origin'
+import Projects, { background as ProjectsBackground } from '../subsections/Projects'
+import OpenSource, { background as OpenSourceBackground } from '../subsections/OpenSource'
+import Art, { background as ArtBackground } from '../subsections/Art'
 import Nav from '../components/Nav'
-import { backgrounds } from '../helpers/constants'
 
 const defaultOption = 'projects'
 const options= [
   {
     title: 'Origin',
     href: 'origin',
-    background: backgrounds.red.key,
+    background: OriginBackground,
     component: <Origin />
   },
   {
     title: 'Projects',
     href: 'projects',
-    background: backgrounds.purple.key,
+    background: ProjectsBackground,
     component: <Projects />
   },
   {
     title: 'Open Source',
     href: 'open-source',
-    background: backgrounds.blue.key,
+    background: OpenSourceBackground,
     component: <OpenSource />
   },
   {
     title: 'Art',
     href: 'art',
-    background: backgrounds.green.key,
+    background: ArtBackground,
     component: <Art />
   }
 ]

@@ -5,10 +5,10 @@ import { backgrounds } from '../helpers/constants'
 
 type Props = {
   children: React.Node,
-  background?: string
+  background: string
 }
 
-const Layout = (props: Props) => <div className={`background background-color-${props.background || 'blue'}`}>
+const Layout = (props: Props) => <div className={`background background-color-${props.background}`}>
   { props.children }
   <Head>
     <title>Connor Davis</title>
