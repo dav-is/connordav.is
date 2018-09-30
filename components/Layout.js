@@ -1,12 +1,14 @@
 // @flow
 import * as React from 'react'
 import Head from 'next/head'
+import { backgrounds } from '../helpers/constants'
 
 type Props = {
-  children: React.Node
+  children: React.Node,
+  background?: string
 }
 
-const Layout = (props: Props) => <div className='background background-color'>
+const Layout = (props: Props) => <div className={`background background-color-${props.background || 'blue'}`}>
   { props.children }
   <Head>
     <title>Connor Davis</title>
@@ -23,8 +25,21 @@ const Layout = (props: Props) => <div className='background background-color'>
         color: white; 
         background: #8E54E9;
     }
-    .background-color {
-      background: #8E54E9;
+    
+    .background-color-red {
+      background: ${backgrounds.red.hex};
+    }
+
+    .background-color-blue {
+      background: ${backgrounds.blue.hex};
+    }
+
+    .background-color-green {
+      background: ${backgrounds.green.hex};
+    }
+
+    .background-color-purple {
+      background: ${backgrounds.purple.hex};
     }
   `}</style>
   <style jsx>{`

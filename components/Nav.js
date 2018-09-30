@@ -2,7 +2,7 @@
 import * as React from 'react'
 import Router from 'next/router'
 
-type Option = {
+export type Option = {
   title: string,
   href: string,
   background: string,
@@ -11,7 +11,8 @@ type Option = {
 
 type Props = {
   options: Array<Option>,
-  selectedOption: string
+  initialOption: string,
+  changeBackground:(string) => void
 }
 
 type State = {
@@ -24,7 +25,7 @@ class Nav extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
-    const currentOption = this.props.options.find(option => option.href === props.selectedOption) || this.props.options[0]
+    const currentOption = this.props.options.find(option => option.href === props.initialOption) || this.props.options[0]
 
     this.state = {
       swipe: 'up-in delay',
@@ -61,7 +62,7 @@ class Nav extends React.Component<Props, State> {
 
       const movingLeft = this.getIndex(currentOption.href) > this.getIndex(this.state.currentOption.href) || false
 
-      document.getElementsByClassName('background')[0].style.background = this.state.currentOption.background
+      this.props.changeBackground(currentOption.background)
 
       Router.push({
         pathname: '/',
