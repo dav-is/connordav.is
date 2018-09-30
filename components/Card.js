@@ -3,7 +3,7 @@ import * as React from 'react'
 import Router from 'next/router'
 import { BackgroundContext } from '../helpers/context'
 
-type Animation = 'expanded' | 'condensed' | 'cloned' | 'expanding'
+type Animation = 'condensed' | 'cloned' | 'expanding' | 'expanded'
 
 type Props = {
   expanded?: bool,
@@ -58,7 +58,7 @@ class Card extends React.Component<Props, State> {
         </div>}
       </BackgroundContext.Consumer> }
       { (this.state.animation === 'expanded' || this.state.animation === 'condensed') && (
-        <div className={`card${this.state.animation === 'expanded' ? ' expanded' : ''}`} onClick={this.props.location && this.handleClick(this.props.location)} ref={this.card}>
+        <div className={`card${this.state.animation === 'expanded' ? ' expanded' : ''}`} onClick={this.props.location ? this.handleClick(this.props.location) : undefined} ref={this.card}>
           { this.props.header(this.props.expanded || false) }
           { this.props.children }
         </div>
