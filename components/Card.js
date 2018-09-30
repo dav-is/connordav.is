@@ -3,79 +3,69 @@ import * as React from 'react'
 import Router from 'next/router'
 import { BackgroundContext } from '../helpers/context'
 
+type Animation = 'expanded' | 'condensed' | 'cloned' | 'expanding'
+
 type Props = {
   expanded?: bool,
   header:(bool) => React.Node,
   children?: React.Node,
-  location?: string
+  location?: string,
+  initAnimation?: Animation
 }
 
 type State = {
-  expanding: bool,
+  animation: Animation
 }
 
 class Card extends React.Component<Props, State> {
   card: { current: null | HTMLDivElement }
-  hiddenCard: { current: null | HTMLDivElement }
-  boundingCard: { current: null | HTMLDivElement }
+  clone: { current: null | HTMLDivElement }
 
   constructor (props: Props) {
     super(props)
 
     this.card = React.createRef()
-    this.hiddenCard = React.createRef()
-    this.boundingCard = React.createRef()
+    this.clone = React.createRef()
     this.state = {
-      expanding: this.props.expanded || false
+      animation: props.expanded ? 'expanded' : (props.initAnimation || 'condensed')
     }
   }
 
   handleClick (location: string) {
-    return (e: SyntheticEvent<HTMLAnchorElement>): void => {
+    return (e: SyntheticEvent<HTMLAnchorElement>) => {
       e.preventDefault()
       e.stopPropagation()
 
-      if (!this.card.current) return
-      this.card.current.style.transition = 'none'
-      const card = this.card.current.getBoundingClientRect()
+      if (this.state.animation === 'condensed' && this.card.current) {
+        const { height, top } = this.card.current.getBoundingClientRect()
 
-      if (!this.boundingCard.current) return
-      const bounding = this.boundingCard.current.getBoundingClientRect()
-
-      if (!this.hiddenCard.current) return
-      this.hiddenCard.current.style.transitionDuration = '0s'
-      this.hiddenCard.current.style.top = `${card.top}px`
-      this.hiddenCard.current.style.height = `${card.height - (bounding.height)}px`
-      this.hiddenCard.current.style.right = `${card.left}px`
-      this.hiddenCard.current.style.left = `${card.left}px`
-      this.hiddenCard.current.style.transitionDuration = '.7s'
-
-      this.hiddenCard.current.style.display = 'flex'
-      this.card.current && (this.card.current.style.opacity = '0')
-
-      setTimeout(() => this.setState({ expanding: true }), 3)
-      setTimeout(() => this.hiddenCard.current && this.hiddenCard.current.classList.add('expand'), 5)
-
-      setTimeout(() => Router.push(location), 1000)
+        if (this.clone.current) {
+          this.clone.current.style.height = `${height}px`
+          this.clone.current.style.top = `${top}px`
+          this.setState({ animation: 'cloned' })
+        }
+        setTimeout(() => this.setState({ animation: 'expanding' }), 0)
+        setTimeout(() => Router.push(location), 1000)
+      }
     }
   }
 
   render () {
     return <div>
-      <div className={`card ${this.props.expanded ? 'expand' : ''}`} ref={this.card} onClick={this.props.location && this.handleClick(this.props.location)}>
-        { this.props.header(this.props.expanded ? true : this.state.expanding) }
-        { this.props.children }
-      </div>
-      { !this.props.expanded && <>
-        <BackgroundContext.Consumer>
-          {(key) => <div className={`card background-color-${key} hidden`} ref={this.hiddenCard}>
-            { this.props.header(this.state.expanding) }
-          </div>}
-        </BackgroundContext.Consumer>
-        <div className='card hidden bounding' ref={this.boundingCard} />
-      </>}
+      { this.state.animation !== 'expanded' && <BackgroundContext.Consumer>
+        {(key) => <div className={`card clone ${this.state.animation === 'expanding' ? 'expanded' : this.state.animation} background-color-${key}`} ref={this.clone}>
+          { this.props.header(this.state.animation === 'expanding') }
+        </div>}
+      </BackgroundContext.Consumer> }
+      { (this.state.animation === 'expanded' || this.state.animation === 'condensed') && (
+        <div className={`card${this.state.animation === 'expanded' ? ' expanded' : ''}`} onClick={this.props.location && this.handleClick(this.props.location)} ref={this.card}>
+          { this.props.header(this.props.expanded || false) }
+          { this.props.children }
+        </div>
+      )}
       <style jsx>{`
         .card {
+          box-sizing: border-box;
           color: white;
           border: 1px solid #FFF;
           padding: 1vh 2vh;
@@ -84,39 +74,62 @@ class Card extends React.Component<Props, State> {
           cursor: pointer;
           display: flex;
           flex-direction: column;
+          margin: auto;
         }
 
-        .card.hidden {
-          cursor: default;
-          display: none;
-          position: absolute;
+        .card:not(.expanded) {
+          width: 65%;
+          transition: .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+
+        @media only screen and (min-width: 1200px) {
+          .card:not(.expanded) {
+            width: 45%;
+          }
+        }
+
+        @media only screen and (max-width: 800px) {
+          .card:not(.expanded) {
+            width: 85%;
+          }
+        }
+
+        .card:not(.expanded):hover {
           box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
-          transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
+          transform: translateY(-5px);
         }
 
-        .card.bounding {
-          display: block;
-          opacity: 0;
-        }
-
-        .card.expand {
+        .card.expanded {
           cursor: default;
           position: absolute;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           top: 1.5vh !important;
           left: 1.5vh !important;
           right: 1.5vh !important;
-          height: 93vh !important;
+          height: 96vh !important;
           padding: 2vh 4vh;
+          width: 97%;
         }
 
-        .card.hidden:hover {
+        .card.clone {
+          cursor: default;
+          display: none;
+          position: absolute;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
+        }
+
+        .card.clone:hover {
           transform: none;
         }
 
-        .card:not(.expand):hover {
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
-          transform: translateY(-5px);
+        .card.clone.cloned {
+          left: 1.5vh;
+          right: 1.5vh;
+        }
+
+        .card.clone.expanded, .card.clone.cloned {
+          display: flex;
+          transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
         }
       `}</style>
     </div>

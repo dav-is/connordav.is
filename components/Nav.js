@@ -123,24 +123,9 @@ class Nav extends React.Component<Props, State> {
 
         .component {
           transition: .5s;
-          width: 65%;
-          flex: 1;
-          display: flex;
-          justify-content: center;
           transform: none;
           opacity: 1;
-        }
-
-        @media only screen and (min-width: 1200px) {
-          .component {
-            width: 45%;
-          }
-        }
-
-        @media only screen and (max-width: 800px) {
-          .component {
-            width: 85%;
-          }
+          width: 100%;
         }
 
         .component.swipe-left-in {
