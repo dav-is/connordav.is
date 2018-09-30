@@ -11,4 +11,4 @@ RUN yarn
 COPY . .
 
 # Build and export the app
-RUN yarn export
+RUN yarn export && cp /usr/src/public /public -R
