@@ -2,27 +2,29 @@
 import * as React from 'react'
 import Router from 'next/router'
 
+type Option = {
+  title: string,
+  href: string,
+  background: string,
+  component: React.Node
+}
+
 type Props = {
-  options: Array<{
-    title: string,
-    href: string,
-    background: string,
-    component: React.Component<void>
-  }>,
+  options: Array<Option>,
   selectedOption: string
 }
 
 type State = {
   swipe: string,
-  currentOption: any,
-  currentComponent: any
+  currentOption: Option,
+  currentComponent: Option
 }
 
 class Nav extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
-    const currentOption = this.props.options.find(option => option.href === props.selectedOption)
+    const currentOption = this.props.options.find(option => option.href === props.selectedOption) || this.props.options[0]
 
     this.state = {
       swipe: 'up-in delay',
@@ -106,7 +108,7 @@ class Nav extends React.Component<Props, State> {
         <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
       </ul>
       <div id={this.state.currentComponent.href} className={`component ${`swipe-${this.state.swipe}`}`}>
-        { this.state.currentComponent.component() }
+        { this.state.currentComponent.component }
       </div>
       <style jsx>{`
         .container {

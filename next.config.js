@@ -3,9 +3,9 @@ module.exports = {
     return {
       '/': { page: '/' },
       '/projects': { page: '/', query: { selectedOption: 'projects' } },
-      '/one': { page: '/', query: { selectedOption: 'one' } },
-      '/two': { page: '/', query: { selectedOption: 'two' } },
-      '/three': { page: '/', query: { selectedOption: 'three' } }
+      '/origin': { page: '/', query: { selectedOption: 'origin' } },
+      '/open-source': { page: '/', query: { selectedOption: 'open-source' } },
+      '/art': { page: '/', query: { selectedOption: 'art' } }
     }
   }
 }

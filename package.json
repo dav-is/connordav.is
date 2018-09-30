@@ -10,7 +10,7 @@
     "lint-fix": "eslint ./ *.js --fix",
     "test": "npm run lint",
     "build": "next build",
-    "export": "npm run build && next export -o /public",
+    "export": "npm run build && next export -o ./public",
     "deploy": "npm run export && now"
   },
   "dependencies": {
