@@ -25,25 +25,25 @@ const Index = (props: Props) => <Layout>
         title: 'Origin',
         href: 'origin',
         background: backgrounds.red,
-        component: Origin
+        component: <Origin />
       },
       {
         title: 'Projects',
         href: 'projects',
         background: backgrounds.purple,
-        component: Projects
+        component: <Projects />
       },
       {
         title: 'Open Source',
         href: 'open-source',
         background: backgrounds.blue,
-        component: OpenSource
+        component: <OpenSource />
       },
       {
         title: 'Art',
         href: 'art',
         background: backgrounds.green,
-        component: Art
+        component: <Art />
       }
     ]} />
     <div className='doubleSpacer' />
