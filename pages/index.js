@@ -1,20 +1,26 @@
+// @flow
+import * as React from 'react'
 import Layout from '../components/Layout'
-import Origin from '../components/subsections/Origin'
-import Projects from '../components/subsections/Projects'
-import OpenSource from '../components/subsections/OpenSource'
-import Art from '../components/subsections/Art'
+import Origin from '../subsections/Origin'
+import Projects from '../subsections/Projects'
+import OpenSource from '../subsections/OpenSource'
+import Art from '../subsections/Art'
 import Nav from '../components/Nav'
 import { backgrounds } from '../helpers/constants'
 
-const Index = (props) => <Layout>
+type Props = {
+  selectedOption: string
+}
+
+const Index = (props: Props) => <Layout>
   <div className='container'>
-    <div className='doubleSpacer'></div>
+    <div className='doubleSpacer' />
     <h1>Connor Davis</h1>
     <span className='subtitle'>
       Web Applications Engineer with a passion in scalability, maintainability, and integration.
     </span>
-    <div className='spacer'></div>
-    <Nav selectedOption={ props.selectedOption ? props.selectedOption : 'projects' } options={[
+    <div className='spacer' />
+    <Nav selectedOption={props.selectedOption ? props.selectedOption : 'projects'} options={[
       {
         title: 'Origin',
         href: 'origin',
@@ -38,9 +44,9 @@ const Index = (props) => <Layout>
         href: 'art',
         background: backgrounds.green,
         component: Art
-      },
+      }
     ]} />
-    <div className='doubleSpacer'></div>
+    <div className='doubleSpacer' />
   </div>
   <style jsx>{`
     .container {

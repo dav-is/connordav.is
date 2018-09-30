@@ -1,11 +1,17 @@
+// @flow
+import * as React from 'react'
 import Head from 'next/head'
 
-export default (props) => <div className='background background-color'>
+type Props = {
+  children: React.Node
+}
+
+const Layout = (props: Props) => <div className='background background-color'>
   { props.children }
   <Head>
     <title>Connor Davis</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="https://fonts.googleapis.com/css?family=Kanit:600|Open+Sans" rel="stylesheet" />
+    <meta content='width=device-width, initial-scale=1' name='viewport' />
+    <link href='https://fonts.googleapis.com/css?family=Kanit:600|Open+Sans' rel='stylesheet' />
   </Head>
   <style jsx global>{`
     ::-moz-selection {
@@ -35,3 +41,5 @@ export default (props) => <div className='background background-color'>
     }
   `}</style>
 </div>
+
+export default Layout

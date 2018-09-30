@@ -1,3 +1,4 @@
+// @flow
 export const backgrounds = {
   red: '#d63031',
   blue: '#0984e3',

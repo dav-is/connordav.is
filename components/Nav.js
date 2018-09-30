@@ -1,7 +1,25 @@
+// @flow
+import * as React from 'react'
 import Router from 'next/router'
 
-export default class Nav extends React.Component {
-  constructor(props) {
+type Props = {
+  options: Array<{
+    title: string,
+    href: string,
+    background: string,
+    component: React.Component<void>
+  }>,
+  selectedOption: string
+}
+
+type State = {
+  swipe: string,
+  currentOption: any,
+  currentComponent: any
+}
+
+class Nav extends React.Component<Props, State> {
+  constructor (props: Props) {
     super(props)
 
     const currentOption = this.props.options.find(option => option.href === props.selectedOption)
@@ -13,7 +31,7 @@ export default class Nav extends React.Component {
     }
   }
 
-  static growValues(optionsLength, currentIndex) {
+  static growValues (optionsLength: number, currentIndex: number): {right: number, left: number} {
     const offsetCount = optionsLength - 1
     const pseudoCount = 2
     const right = Math.round(optionsLength * (currentIndex / offsetCount)) + pseudoCount
@@ -24,17 +42,22 @@ export default class Nav extends React.Component {
     }
   }
 
-  getIndex(href) {
+  getIndex (href: string) {
     return this.props.options.findIndex(option => option.href === href)
   }
 
-  handleClick(name) {
-    return e => {
+  handleClick (name: string) {
+    return (e: SyntheticEvent<HTMLAnchorElement>): void => {
       e.preventDefault()
       e.stopPropagation()
 
       const currentOption = this.props.options.find(option => option.href === name)
-      const movingLeft = this.getIndex(currentOption.href) > this.getIndex(this.state.currentOption.href) ? true : false
+      if (!currentOption) {
+        console.error(`Option with name ${name} does not exist.`)
+        return
+      }
+
+      const movingLeft = this.getIndex(currentOption.href) > this.getIndex(this.state.currentOption.href) || false
 
       document.getElementsByClassName('background')[0].style.background = this.state.currentOption.background
 
@@ -57,27 +80,27 @@ export default class Nav extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const growValues = Nav.growValues(this.props.options.length, this.getIndex(this.state.currentOption.href))
 
     return <div className='container'>
       <ul className='nav' role='tablist'>
         <li key={0} className={`pseudo grow-${growValues.left}`} />
-        { this.props.options.map((option, index) => 
+        { this.props.options.map((option, index) =>
           <li
-            key={ index + 1 }
-            index={ index }
+            key={index + 1}
+            index={index}
             className={`option ${this.state.currentOption.href === option.href ? 'active' : ''}`}
           >
-              <a
-                href={`/${option.href}`}
-                onClick={this.handleClick(option.href)}
-                aria-controls={ option.href }
-                role='tab'
-                data-toggle='tab'
-              >
-                { option.title }
-              </a>
+            <a
+              href={`/${option.href}`}
+              onClick={this.handleClick(option.href)}
+              aria-controls={option.href}
+              role='tab'
+              data-toggle='tab'
+            >
+              { option.title }
+            </a>
           </li>
         ) }
         <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
@@ -273,3 +296,5 @@ export default class Nav extends React.Component {
     </div>
   }
 }
+
+export default Nav

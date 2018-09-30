@@ -1,0 +1,7 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-flow", "standard-react"],
+  "rules": {
+    "standard/no-callback-literal": 0
+  }
+}

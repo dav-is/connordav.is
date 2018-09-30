@@ -1,82 +1,76 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import Router from 'next/router'
 
-export const CardTemplate = (props) => <>
-  <h3 className={props.isLarge ? 'large' : ''}>{ props.title }</h3>
-  <p className={props.isLarge ? 'large' : ''}>{ props.body }</p>
-  <style jsx>{`
-    h3 {
-      font-weight: normal;
-      font-family: 'Kanit', sans-serif;
-      font-size: 3vh;
-      margin-top: 5px;
-      margin-bottom: 0;
-      transition: .7s;
+type Props = {
+  expanded?: bool,
+  header:(bool) => React.Node,
+  children?: React.Node,
+  location?: string
+}
+
+type State = {
+  expanding: bool,
+}
+
+class Card extends React.Component<Props, State> {
+  card: { current: null | HTMLDivElement }
+  hiddenCard: { current: null | HTMLDivElement }
+  boundingCard: { current: null | HTMLDivElement }
+
+  constructor (props: Props) {
+    super(props)
+
+    this.card = React.createRef()
+    this.hiddenCard = React.createRef()
+    this.boundingCard = React.createRef()
+    this.state = {
+      expanding: this.props.expanded || false
     }
-
-    h3.large {
-      font-size: 6vh;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-top: 0;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 2vh;
-      transition: .7s;
-    }
-
-    p.large {
-      font-size: 2.5vh;
-    }
-  `}</style>
-</>
-
-export default class Card extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.card = React.createRef();
-    this.hiddenCard = React.createRef();
-    this.boundingCard = React.createRef();
   }
 
-  handleClick(location) {
-    return e => {
+  handleClick (location: string) {
+    return (e: SyntheticEvent<HTMLAnchorElement>): void => {
       e.preventDefault()
       e.stopPropagation()
 
+      if (!this.card.current) return
       this.card.current.style.transition = 'none'
       const card = this.card.current.getBoundingClientRect()
+
+      if (!this.boundingCard.current) return
       const bounding = this.boundingCard.current.getBoundingClientRect()
 
+      if (!this.hiddenCard.current) return
       this.hiddenCard.current.style.transitionDuration = '0s'
-      this.hiddenCard.current.style.top = `${card.y}px`
+      this.hiddenCard.current.style.top = `${card.top}px`
       this.hiddenCard.current.style.height = `${card.height - (bounding.height)}px`
-      this.hiddenCard.current.style.right = `${card.x}px`
-      this.hiddenCard.current.style.left = `${card.x}px`
+      this.hiddenCard.current.style.right = `${card.left}px`
+      this.hiddenCard.current.style.left = `${card.left}px`
       this.hiddenCard.current.style.transitionDuration = '.7s'
 
       this.hiddenCard.current.style.display = 'flex'
-      this.card.current.style.opacity = '0'
+      this.card.current && (this.card.current.style.opacity = '0')
 
-      setTimeout(() => this.hiddenCard.current.classList.add("explode"), 5)
+      setTimeout(() => this.setState({ expanding: true }), 3)
+      setTimeout(() => this.hiddenCard.current && this.hiddenCard.current.classList.add('expand'), 5)
 
-      setTimeout(() => Router.push(location), 1000);
+      setTimeout(() => Router.push(location), 1000)
     }
   }
 
-  render() {
+  render () {
     return <div>
-      <div className='card' ref={this.card} onClick={this.handleClick(this.props.location)}>
-        <this.props.body />
+      <div className={`card ${this.props.expanded ? 'expand' : ''}`} ref={this.card} onClick={this.props.location && this.handleClick(this.props.location)}>
+        { this.props.header(this.props.expanded ? true : this.state.expanding) }
+        { this.props.children }
       </div>
-      <div className='card background-color hidden' ref={this.hiddenCard}>
-        <this.props.body />
-      </div>
-      <div className='card hidden bounding' ref={this.boundingCard}>
-      </div>
+      { !this.props.expanded && <>
+        <div className='card background-color hidden' ref={this.hiddenCard}>
+          { this.props.header(this.state.expanding) }
+        </div>
+        <div className='card hidden bounding' ref={this.boundingCard} />
+      </>}
       <style jsx>{`
         .card {
           color: white;
@@ -102,7 +96,10 @@ export default class Card extends React.Component {
           opacity: 0;
         }
 
-        .card.hidden.explode {
+        .card.expand {
+          cursor: default;
+          position: absolute;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           top: 1.5vh !important;
           left: 1.5vh !important;
           right: 1.5vh !important;
@@ -114,7 +111,7 @@ export default class Card extends React.Component {
           transform: none;
         }
 
-        .card:hover {
+        .card:not(.expand):hover {
           box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           transform: translateY(-5px);
         }
@@ -122,3 +119,5 @@ export default class Card extends React.Component {
     </div>
   }
 }
+
+export default Card
