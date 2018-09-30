@@ -9,7 +9,7 @@
     "lint": "flow && eslint ./ *.js",
     "lint-fix": "eslint ./ *.js --fix",
     "test": "npm run lint",
-    "build": "next build",
+    "build": "npm run export",
     "export": "npm run build && next export",
     "deploy": "npm run export && cd out && now --public -n personal"
   },
