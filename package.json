@@ -6,6 +6,7 @@
   "author": "Connor Davis",
   "scripts": {
     "dev": "next",
+    "flow": "npm run flow",
     "lint": "flow && eslint ./ *.js",
     "lint-fix": "eslint ./ *.js --fix",
     "test": "npm run lint",

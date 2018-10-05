@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 import Cards from '../components/Cards'
 import { backgrounds } from '../helpers/constants'
