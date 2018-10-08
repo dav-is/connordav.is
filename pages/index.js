@@ -36,7 +36,7 @@ const options= [
 ]
 
 type Props = {
-  selectedOption?: string
+  option?: string
 }
 
 type State = {
@@ -45,7 +45,7 @@ type State = {
 
 type InitialProps = {
   query: {
-    selectedOption?: string
+    option?: string
   }
 }
 
@@ -55,14 +55,14 @@ class Index extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
-    this.initialOption = this.props.selectedOption || defaultOption
+    this.initialOption = this.props.option || defaultOption
     this.state = {
       background: (options.find(option => option.href === this.initialOption) || options[0]).background
     }
   }
 
   getInitialProps = async ({ query }: InitialProps): Props => {
-    return { selectedOption: query.selectedOption }
+    return { option: query.option }
   }
 
   changeBackground = (color: string) => {

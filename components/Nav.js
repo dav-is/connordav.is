@@ -66,7 +66,7 @@ class Nav extends React.Component<Props, State> {
 
       Router.push({
         pathname: '/',
-        query: { selectedOption: currentOption.href }
+        query: { option: currentOption.href }
       }, `/${currentOption.href}`, { shallow: true })
 
       this.setState({
@@ -259,6 +259,12 @@ class Nav extends React.Component<Props, State> {
           -webkit-flex: 1 1 50%;
           flex: 1 1 auto;
           text-align: center;
+        }
+
+        @media screen and (max-width: 350px) {
+          .option {
+            padding: 0;
+          }
         }
 
         a {

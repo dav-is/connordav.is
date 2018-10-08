@@ -2,11 +2,11 @@ module.exports = {
   exportPathMap: async function (defaultPathMap) {
     return {
       '/': { page: '/' },
-      '/projects': { page: '/', query: { selectedOption: 'projects' } },
+      '/projects': { page: '/', query: { option: 'projects' } },
       '/projects/authenticity-platform': { page: '/projects/authenticity-platform' },
-      '/origin': { page: '/', query: { selectedOption: 'origin' } },
-      '/open-source': { page: '/', query: { selectedOption: 'open-source' } },
-      '/art': { page: '/', query: { selectedOption: 'art' } }
+      '/origin': { page: '/', query: { option: 'origin' } },
+      '/open-source': { page: '/', query: { option: 'open-source' } },
+      '/art': { page: '/', query: { option: 'art' } }
     }
   }
 }
