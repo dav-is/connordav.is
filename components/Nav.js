@@ -16,8 +16,7 @@ type Props = {
 }
 
 type State = {
-  show: bool,
-  swipe?: string,
+  swipe: string,
   currentOption: Option,
   currentComponent: Option
 }
@@ -29,7 +28,6 @@ class Nav extends React.Component<Props, State> {
     const currentOption = this.props.options.find(option => option.href === props.initialOption) || this.props.options[0]
 
     this.state = {
-      show: true,
       swipe: 'up-in delay',
       currentOption,
       currentComponent: currentOption
@@ -75,37 +73,14 @@ class Nav extends React.Component<Props, State> {
         swipe: `${movingLeft ? 'left' : 'right'}-out`,
         currentOption
       })
-      setTimeout(() => {
-        this.setState({
-          show: false
-        })
-      }, 500)
 
       setTimeout(() => {
         this.setState({
           currentComponent: currentOption,
-          show: true,
-          swipe: undefined
-        })
-      }, 550)
-
-      setTimeout(() => {
-        this.setState({
           swipe: `${movingLeft ? 'right' : 'left'}-in`
         })
-      }, 600)
+      }, 500)
     }
-  }
-
-  getComponentClassnames (option: Option) {
-    let classnames = 'component'
-
-    if (this.state.currentComponent.href === option.href) {
-      if (this.state.swipe) classnames += ` swipe-${this.state.swipe}`
-      if (this.state.show) classnames += ' show'
-    }
-
-    return classnames
   }
 
   render () {
@@ -134,7 +109,7 @@ class Nav extends React.Component<Props, State> {
         <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
       </ul>
       { this.props.options.map((option, i) => (
-        <div key={i} id={option.href} className={this.getComponentClassnames(option)}>
+        <div key={i} id={option.href} className={`component ${this.state.currentComponent.href === option.href ? `show swipe-${this.state.swipe}` : ''}`}>
           { option.component }
         </div>
       )) }
