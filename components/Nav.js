@@ -87,13 +87,13 @@ class Nav extends React.Component<Props, State> {
           show: true,
           swipe: undefined
         })
-      }, 501)
+      }, 550)
 
       setTimeout(() => {
         this.setState({
           swipe: `${movingLeft ? 'right' : 'left'}-in`
         })
-      }, 502)
+      }, 600)
     }
   }
 
