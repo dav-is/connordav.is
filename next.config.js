@@ -3,6 +3,7 @@ module.exports = {
     return {
       '/': { page: '/' },
       '/projects': { page: '/', query: { selectedOption: 'projects' } },
+      '/projects/authenticity-platform': { page: '/projects/authenticity-platform' },
       '/origin': { page: '/', query: { selectedOption: 'origin' } },
       '/open-source': { page: '/', query: { selectedOption: 'open-source' } },
       '/art': { page: '/', query: { selectedOption: 'art' } }
