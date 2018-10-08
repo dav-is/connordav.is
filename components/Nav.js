@@ -108,9 +108,11 @@ class Nav extends React.Component<Props, State> {
         ) }
         <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
       </ul>
-      <div id={this.state.currentComponent.href} className={`component ${`swipe-${this.state.swipe}`}`}>
-        { this.state.currentComponent.component }
-      </div>
+      { this.props.options.map((option, i) => (
+        <div key={i} id={option.href} className={`component ${this.state.currentComponent.href === option.href ? `show swipe-${this.state.swipe}` : ''}`}>
+          { option.component }
+        </div>
+      )) }
       <style jsx>{`
         .container {
           width: 100%;
@@ -126,6 +128,11 @@ class Nav extends React.Component<Props, State> {
           transform: none;
           opacity: 1;
           width: 100%;
+          display: none;
+        }
+
+        .component.show {
+          display: block;
         }
 
         .component.swipe-left-in {
