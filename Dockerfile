@@ -5,7 +5,7 @@ WORKDIR /usr/src
 
 # Install dependencies
 COPY package.json ./
-RUN npm
+RUN npm i
 
 # Copy the relevant files to the working directory
 COPY . .
