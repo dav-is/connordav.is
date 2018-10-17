@@ -1,4 +1,4 @@
-FROM mhart/alpine-node
+FROM cypress/base:10
 
 # Set the default working directory
 WORKDIR /usr/src
