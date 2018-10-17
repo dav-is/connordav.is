@@ -6,16 +6,17 @@
   "author": "Connor Davis",
   "scripts": {
     "dev": "next",
-    "start": "next start",
+    "devT": "start-server-and-test dev http://localhost:3000 cy:open",
+    "serve": "npm run export && static-server -p 3000 public",
     "build": "next build",
     "export": "npm run build && next export -o ./public",
     "deploy": "npm run export && now",
+    "test": "npm run lint && npm run cy:headless",
     "lint": "flow && eslint ./ *.js",
     "flow": "npm run flow",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test start http://localhost:3000 cy:run",
-    "test": "npm run lint && npm run cy:headless"
+    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
   },
   "dependencies": {
     "next": "^7.0.2",
@@ -38,7 +39,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.83.0",
     "husky": "^1.1.2",
-    "start-server-and-test": "^1.7.4"
+    "start-server-and-test": "^1.7.4",
+    "static-server": "^2.2.1"
   },
   "husky": {
     "hooks": {
