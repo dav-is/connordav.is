@@ -55,7 +55,7 @@ class Index extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
-    this.initialOption = this.props.option || defaultOption
+    this.initialOption = props.option || defaultOption
     this.state = {
       background: (options.find(option => option.href === this.initialOption) || options[0]).background
     }
