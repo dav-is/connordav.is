@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next",
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
-    "serve": "npm run export && static-server -p 3000 public",
+    "serve": "npm run export && serve -l 3000 -n public",
     "build": "next build",
     "export": "npm run build && next export -o ./public",
     "deploy": "npm run export && now",
@@ -39,8 +39,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.83.0",
     "husky": "^1.1.2",
-    "start-server-and-test": "^1.7.4",
-    "static-server": "^2.2.1"
+    "serve": "^10.0.2",
+    "start-server-and-test": "^1.7.4"
   },
   "husky": {
     "hooks": {
