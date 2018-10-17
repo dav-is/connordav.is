@@ -5,10 +5,12 @@ WORKDIR /usr/src
 
 # Install dependencies
 COPY package.json ./
-RUN yarn
+RUN npm
 
 # Copy the relevant files to the working directory
 COPY . .
 
+RUN npm run test
+
 # Build and export the app
-RUN yarn export && mv ./public /
+RUN npm run export && mv ./public /
