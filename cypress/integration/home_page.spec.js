@@ -57,7 +57,7 @@ describe('The Home Page', function () {
 
   it('can click on each Project', function () {
     cy.visit('/')
-    cy.get(':nth-child(1) > :nth-child(2) > div > h3').click()
+    cy.get('#projects > .cards > div:nth-child(1) > div:not(.clone) h3').click()
     cy.url().should('include', '/projects/authenticity-platform')
   })
 
