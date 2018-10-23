@@ -5,12 +5,14 @@ WORKDIR /usr/src
 
 # Install dependencies
 COPY package.json ./
+COPY package-lock.json ./
 RUN npm i --silent
 
 # Copy the relevant files to the working directory
 COPY . .
 
+# Export and run tests
 RUN npm run test
 
-# Build and export the app
-RUN npm run export && mv ./public /
+# The tests have passed on our files so we can copy them
+RUN mv ./public /

@@ -12,8 +12,7 @@
     "export": "npm run build && next export -o ./public",
     "deploy": "npm run export && now",
     "test": "npm run lint && npm run cy:headless",
-    "lint": "npm run flow && eslint ./ *.js",
-    "flow": "flow",
+    "lint": "flow && eslint ./ *.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
