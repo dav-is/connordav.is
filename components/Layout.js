@@ -13,8 +13,8 @@ const Layout = (props: Props) => <div className={`background background-color-${
   <Head>
     <title>Connor Davis</title>
     <meta content='width=device-width, initial-scale=1' name='viewport' />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.gstatic.com" rel="dns-prefetch">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.gstatic.com" rel="dns-prefetch" />
     <link href='https://fonts.googleapis.com/css?family=Kanit:600|Open+Sans' rel='stylesheet' />
   </Head>
   <style jsx global>{`
