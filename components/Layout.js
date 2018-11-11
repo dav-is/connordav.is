@@ -30,6 +30,10 @@ const Layout = (props: Props) => <div className={`background background-color-${
       background: ${backgrounds.red.hex};
     }
 
+    .background-color-grey {
+      background: ${backgrounds.grey.hex};
+    }
+
     .background-color-blue {
       background: ${backgrounds.blue.hex};
     }

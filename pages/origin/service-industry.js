@@ -3,11 +3,11 @@ import * as React from 'react'
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Projects'
+import { background } from '../../subsections/Origin'
 
 export const header = (expanded: bool) => <CardHeader
   isLarge={expanded}
-  title='Authenticity Platform'
+  title='Service Industry'
 >
   Coming soon...
 </CardHeader>

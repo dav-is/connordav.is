@@ -3,11 +3,11 @@ import * as React from 'react'
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Projects'
+import { background } from '../../subsections/Origin'
 
 export const header = (expanded: bool) => <CardHeader
   isLarge={expanded}
-  title='Authenticity Platform'
+  title='Childhood Experiences'
 >
   Coming soon...
 </CardHeader>
@@ -16,10 +16,9 @@ export default () => <Layout background={background}>
   <ExpandedCard header={header}>
     <div>
       <p className='animate'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus sapien mi, dignissim vel condimentum eu, auctor id erat.
-        Donec id ornare lectus, sagittis mattis dolor. Vivamus nec dapibus nisl.
-        Nam sed molestie arcu. Pellentesque sed porttitor ante.
+        From a young age, I had always been interested in computers.
+        At 13, I created my stepmother's local insurance company website in Adobe Dreamweaver.
+        I built my own computer from scratch and set up a local LAMP server in my basement.
       </p>
       <p className='animate d-1'>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -18,7 +18,7 @@ type State = {
 }
 
 class Card extends React.Component<Props, State> {
-  card: { current: null | HTMLDivElement }
+  card: { current: null | HTMLAnchorElement }
   clone: { current: null | HTMLDivElement }
 
   constructor (props: Props) {
@@ -57,12 +57,15 @@ class Card extends React.Component<Props, State> {
           { this.props.header(this.state.animation === 'expanding') }
         </div>}
       </BackgroundContext.Consumer> }
-      { (this.state.animation === 'expanded' || this.state.animation === 'condensed') && (
-        <div className={`card${this.state.animation === 'expanded' ? ' expanded' : ''}`} onClick={this.props.location ? this.handleClick(this.props.location) : undefined} ref={this.card}>
-          { this.props.header(this.props.expanded || false) }
-          { this.props.children }
-        </div>
-      )}
+      <a
+        className={`card${this.state.animation === 'expanded' ? ' expanded' : ''}${this.props.location ? ' linked' : ''}${(this.state.animation === 'expanded' || this.state.animation === 'condensed') ? '' : ' hidden'}`}
+        onClick={this.props.location ? this.handleClick(this.props.location) : undefined}
+        href={this.props.location || undefined}
+        ref={this.card}
+      >
+        { this.props.header(this.props.expanded || false) }
+        { this.props.children }
+      </a>
       <style jsx>{`
         .card {
           box-sizing: border-box;
@@ -71,10 +74,10 @@ class Card extends React.Component<Props, State> {
           padding: 1vh 2vh;
           border-radius: 7px;
           transition: .2s ease;
-          cursor: pointer;
           display: flex;
           flex-direction: column;
           margin: auto;
+          text-decoration: none;
         }
 
         .card:not(.expanded) {
@@ -94,7 +97,11 @@ class Card extends React.Component<Props, State> {
           }
         }
 
-        .card:not(.expanded):hover {
+        .card.linked {
+          cursor: pointer;
+        }
+
+        .card.linked:not(.expanded):hover, .card.linked:not(.expanded):focus {
           box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
           transform: translateY(-5px);
         }
@@ -115,6 +122,7 @@ class Card extends React.Component<Props, State> {
           cursor: default;
           display: none;
           position: absolute;
+          z-index: 50;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 1vh 2vh 0px;
         }
 
@@ -130,6 +138,10 @@ class Card extends React.Component<Props, State> {
         .card.clone.expanded, .card.clone.cloned {
           display: flex;
           transition: .7s cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+
+        .card.hidden {
+          visibility: hidden;
         }
       `}</style>
     </div>

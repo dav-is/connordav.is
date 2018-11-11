@@ -35,6 +35,10 @@ const CardHeader = (props: Props) => <div>
       font-size: 2.5vh;
       margin: 0;
     }
+
+    .link {
+      border-bottom: 1px solid white;
+    }
   `}</style>
 </div>
 

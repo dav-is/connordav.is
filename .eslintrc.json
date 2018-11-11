@@ -1,7 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["standard", "standard-flow", "standard-react"],
+  "extends": ["standard", "standard-flow", "standard-react", "plugin:jsx-a11y/strict"],
   "rules": {
     "standard/no-callback-literal": 0
-  }
+  },
+  "plugins": [
+    "jsx-a11y"
+  ]
 }

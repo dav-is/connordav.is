@@ -15,6 +15,7 @@ const Cards = (props: Props) => <BackgroundContext.Provider value={props.backgro
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
         justify-content: space-evenly;
       }
     `}</style>

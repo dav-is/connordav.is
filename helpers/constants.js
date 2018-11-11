@@ -16,5 +16,9 @@ export const backgrounds = {
   purple: {
     key: 'purple',
     hex: '#6c5ce7'
+  },
+  grey: {
+    key: 'grey',
+    hex: '#263238'
   }
 }

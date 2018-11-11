@@ -3,11 +3,11 @@ import * as React from 'react'
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Projects'
+import { background } from '../../subsections/OpenSource'
 
 export const header = (expanded: bool) => <CardHeader
   isLarge={expanded}
-  title='Authenticity Platform'
+  title='React PWA'
 >
   Coming soon...
 </CardHeader>

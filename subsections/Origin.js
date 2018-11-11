@@ -1,11 +1,15 @@
 // @flow
 import * as React from 'react'
 import Cards from '../components/Cards'
+import CondensedCard from '../components/CondensedCard'
 import { backgrounds } from '../helpers/constants'
-import Card from '../components/Card'
-import CardHeader from '../components/CardHeader'
+import { header as Childhood } from '../pages/origin/childhood'
+import { header as CommunityDev } from '../pages/origin/community-dev'
+import { header as ServiceIndustry } from '../pages/origin/service-industry'
 
 export const background = backgrounds.blue.key
 export default () => <Cards background={background}>
-  <Card header={(e: bool) => <CardHeader title='Placeholder' isLarge={e}>Placeholder text</CardHeader>} />
+  <CondensedCard header={Childhood} location='/origin/childhood' />
+  <CondensedCard header={CommunityDev} location='/origin/community-dev' />
+  <CondensedCard header={ServiceIndustry} location='/origin/service-industry' />
 </Cards>

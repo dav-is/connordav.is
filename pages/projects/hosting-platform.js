@@ -7,7 +7,7 @@ import { background } from '../../subsections/Projects'
 
 export const header = (expanded: bool) => <CardHeader
   isLarge={expanded}
-  title='Authenticity Platform'
+  title='Hosting Platform'
 >
   Coming soon...
 </CardHeader>

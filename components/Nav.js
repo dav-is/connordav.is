@@ -60,7 +60,22 @@ class Nav extends React.Component<Props, State> {
         return
       }
 
-      const movingLeft = this.getIndex(currentOption.href) > this.getIndex(this.state.currentOption.href) || false
+      const proposedIndex = this.getIndex(currentOption.href)
+      const currentIndex = this.getIndex(this.state.currentOption.href)
+
+      if (proposedIndex === currentIndex) {
+        this.setState({
+          swipe: 'attract'
+        })
+        setTimeout(() => {
+          this.setState({
+            swipe: 'none'
+          })
+        }, 720)
+        return
+      }
+
+      const movingLeft = proposedIndex > currentIndex || false
 
       this.props.changeBackground(currentOption.background)
 
@@ -83,11 +98,12 @@ class Nav extends React.Component<Props, State> {
     }
   }
 
+  // TODO: Figure out ARIA roles - use role='menu'
   render () {
     const growValues = Nav.growValues(this.props.options.length, this.getIndex(this.state.currentOption.href))
 
     return <div className='container'>
-      <ul className='nav' role='tablist'>
+      <ul className='nav'>
         <li key={0} className={`pseudo grow-${growValues.left}`} />
         { this.props.options.map((option, index) =>
           <li
@@ -128,6 +144,7 @@ class Nav extends React.Component<Props, State> {
           transform: none;
           opacity: 1;
           width: 100%;
+          height: 100%;
           display: none;
         }
 
@@ -228,6 +245,22 @@ class Nav extends React.Component<Props, State> {
           }
         }
 
+        .component.swipe-attract {
+          animation: swipe-attract .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
+        }
+
+        @keyframes swipe-attract {
+          0% {
+            transform: none;
+          }
+          50% {
+            transform: translateY(-15px) scale(1.02);
+          }
+          100% {
+            transform: none;
+          }
+        }
+
         .nav {
           width: 100%;
           height: 7.5vh;
@@ -274,7 +307,7 @@ class Nav extends React.Component<Props, State> {
         .option > a {
           cursor: pointer;
           text-decoration: none;
-          color: rgba(255,255,255,0.6);
+          color: white;
           font-family: 'Kanit', sans-serif;
           font-size: 2.5vh;
         }
@@ -284,7 +317,7 @@ class Nav extends React.Component<Props, State> {
         }
 
         .option > a:hover, .option > a:active, .option > a:focus {
-          color: rgba(255,255,255,0.3);
+          font-size: 4vh;
         }
 
         .option.active > a {
@@ -293,7 +326,25 @@ class Nav extends React.Component<Props, State> {
         }
 
         /* Allow Pseudo Elements to grow to the proper size */
-        .grow-0 {flex-grow: 0;}.grow-1 {flex-grow: 1;}.grow-2 {flex-grow: 2;}.grow-3 {flex-grow: 3;}.grow-4 {flex-grow: 4;}.grow-5 {flex-grow: 5;}.grow-6 {flex-grow: 6;}.grow-7 {flex-grow: 7;}.grow-8 {flex-grow: 8;}.grow-9 {flex-grow: 9;}.grow-10 {flex-grow: 10;}      `}</style>
+        .grow-0 {flex-grow: 0;}.grow-1 {flex-grow: 1;}.grow-2 {flex-grow: 2;}.grow-3 {flex-grow: 3;}.grow-4 {flex-grow: 4;}.grow-5 {flex-grow: 5;}.grow-6 {flex-grow: 6;}.grow-7 {flex-grow: 7;}.grow-8 {flex-grow: 8;}.grow-9 {flex-grow: 9;}.grow-10 {flex-grow: 10;}
+      `}</style>
+      <style jsx global>{`
+        .component.swipe-attract .card.linked {
+          animation: swipe-attract-card .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
+        }
+
+        @keyframes swipe-attract-card {
+          0% {
+            box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+          }
+          50% {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2vh 2vh 0px;
+          }
+          100% {
+            box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+          }
+        }
+      `}</style>
     </div>
   }
 }
