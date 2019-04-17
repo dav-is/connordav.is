@@ -18,7 +18,7 @@
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
   },
   "dependencies": {
-    "next": "^8.0.4",
+    "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
