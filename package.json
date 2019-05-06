@@ -15,12 +15,15 @@
     "lint": "flow && eslint ./ *.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
+    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "next": "^8.1.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -46,5 +49,6 @@
     "hooks": {
       "pre-commit": "npm test"
     }
-  }
+  },
+  "snyk": true
 }
