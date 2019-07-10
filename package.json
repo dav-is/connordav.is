@@ -17,7 +17,7 @@
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect",
-    "now-build": "npm run export",
+    "now-build": "npm run export && npm run cy:headless",
     "now-dev": "next"
   },
   "dependencies": {
