@@ -15,4 +15,4 @@ COPY . .
 RUN npm run test
 
 # The tests have passed on our files so we can copy them
-RUN mv ./public /
+COPY public /
