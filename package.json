@@ -9,7 +9,7 @@
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
     "serve": "npm run export && serve -l 3000 -n public",
     "build": "next build",
-    "export": "npm run build && next export -o ./public",
+    "export": "npm run build && next export",
     "deploy": "npm run export && now",
     "test": "npm run lint && npm run cy:headless",
     "lint": "flow && eslint ./ *.js",
