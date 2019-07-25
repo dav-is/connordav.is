@@ -8,3 +8,4 @@ workflows:
           start: 'npm run serve'
           record: true
           no-workspace: true
+          yarn: true
