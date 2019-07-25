@@ -6,4 +6,5 @@ workflows:
     jobs:
       - cypress/run:
           start: 'npm run serve'
+          record: true
           no-workspace: true
