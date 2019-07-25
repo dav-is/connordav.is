@@ -4,10 +4,4 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install:
-          build: 'npm run build'
-      - cypress/run:
-          requires:
-            - cypress/install
-          record: true
-          start: 'npm run cy:headless'
+      - cypress/run
