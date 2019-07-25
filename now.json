@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "personal",
+  "alias": ["www.connordav.is"],
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
   ]
