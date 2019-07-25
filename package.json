@@ -7,20 +7,22 @@
   "scripts": {
     "dev": "next",
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
-    "serve": "npm run export && serve -l 3000 -n public",
+    "serve": "npm run export && npm run start",
+    "start": "serve -l 3000 -n dist",
     "build": "next build",
-    "export": "npm run build && next export -o ./public",
-    "deploy": "npm run export && now",
+    "export": "npm run build && next export -o dist",
     "test": "npm run lint && npm run cy:headless",
     "lint": "flow && eslint ./ *.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
+    "cy:headless": "start-server-and-test start http://localhost:3000 cy:run",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "now-build": "npm run export",
+    "now-dev": "next"
   },
   "dependencies": {
-    "next": "^8.1.0",
+    "next": "^9.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "snyk": "^1.199.2"
