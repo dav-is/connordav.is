@@ -4,9 +4,7 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install:
-          build: 'npm run export'
       - cypress/run:
           requires:
             - cypress/install
-          start: 'npm start'
+          start: 'npm run serve'
