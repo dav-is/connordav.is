@@ -19,6 +19,7 @@ type State = {
 
 class Card extends React.Component<Props, State> {
   card: { current: null | HTMLAnchorElement }
+
   clone: { current: null | HTMLDivElement }
 
   constructor (props: Props) {
