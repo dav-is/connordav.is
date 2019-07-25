@@ -5,6 +5,4 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          requires:
-            - cypress/install
           start: 'npm run serve'
