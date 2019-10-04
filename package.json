@@ -17,7 +17,7 @@
     "cy:run": "cypress run",
     "cy:headless": "start-server-and-test start http://localhost:3000 cy:run",
     "snyk-protect": "snyk protect",
-    "prepare": "yarn snyk-protect",
+    "prepare": "npm run snyk-protect && yarn snyk-protect",
     "now-build": "yarn export",
     "now-dev": "next"
   },
