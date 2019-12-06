@@ -4,5 +4,7 @@
   "alias": ["www.connordav.is"],
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
