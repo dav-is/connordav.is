@@ -22,7 +22,7 @@
     "now-dev": "next"
   },
   "dependencies": {
-    "next": "^9.3.5",
+    "next": "^9.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "snyk": "^1.310.1"
