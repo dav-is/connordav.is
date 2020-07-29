@@ -8,8 +8,12 @@ import { header as HostingPlatform } from '../pages/projects/hosting-platform'
 import { header as PersonalSite } from '../pages/projects/personal-site'
 
 export const background = backgrounds.purple.key
-export default () => <Cards background={background}>
-  <CondensedCard header={HostingPlatform} location='/projects/hosting-platform' />
-  <CondensedCard header={AuthenticyPlatform} location='/projects/authenticity-platform' />
-  <CondensedCard header={PersonalSite} location='/projects/personal-site' />
-</Cards>
+const Projects = () => (
+  <Cards background={background}>
+    <CondensedCard header={HostingPlatform} location='/projects/hosting-platform' />
+    <CondensedCard header={AuthenticyPlatform} location='/projects/authenticity-platform' />
+    <CondensedCard header={PersonalSite} location='/projects/personal-site' />
+  </Cards>
+)
+
+export default Projects
