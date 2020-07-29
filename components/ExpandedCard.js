@@ -7,11 +7,10 @@ type Props = {
   children: React.Node
 }
 
-const ExpandedCard = (props: Props) => <Card
-  expanded
-  header={props.header}
->
-  { props.children }
-</Card>
+const ExpandedCard = (props: Props) => (
+  <Card header={props.header} expanded>
+    {props.children}
+  </Card>
+)
 
 export default ExpandedCard

@@ -102,250 +102,254 @@ class Nav extends React.Component<Props, State> {
   render () {
     const growValues = Nav.growValues(this.props.options.length, this.getIndex(this.state.currentOption.href))
 
-    return <div className='container'>
-      <ul className='nav'>
-        <li key={0} className={`pseudo grow-${growValues.left}`} />
-        { this.props.options.map((option, index) =>
-          <li
-            key={index + 1}
-            index={index}
-            className={`option ${this.state.currentOption.href === option.href ? 'active' : ''}`}
-          >
-            <a
-              href={`/${option.href}`}
-              onClick={this.handleClick(option.href)}
-              aria-controls={option.href}
-              role='tab'
-              data-toggle='tab'
+    return (
+      <div className='container'>
+        <ul className='nav'>
+          <li key={0} className={`pseudo grow-${growValues.left}`} />
+          {this.props.options.map((option, index) =>
+            <li
+              key={index + 1}
+              index={index}
+              className={`option ${this.state.currentOption.href === option.href ? 'active' : ''}`}
             >
-              { option.title }
-            </a>
-          </li>
-        ) }
-        <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
-      </ul>
-      { this.props.options.map((option, i) => (
-        <div key={i} id={option.href} className={`component ${this.state.currentComponent.href === option.href ? `show swipe-${this.state.swipe}` : ''}`}>
-          { option.component }
-        </div>
-      )) }
-      <style jsx>{`
-        .container {
-          width: 100%;
-          flex: 10;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          transition: 1s;
-        }
-
-        .component {
-          transition: .5s;
-          transform: none;
-          opacity: 1;
-          width: 100%;
-          height: 100%;
-          display: none;
-        }
-
-        .component.show {
-          display: block;
-        }
-
-        .component.swipe-left-in {
-          animation: swipe-left .5s ease 0s forwards;
-        }
-
-        .component.swipe-left-in.delay {
-          animation-delay: .7s;
-          transform: translateX(-80px) scale(0.95);
-            opacity: 0;
-        }
-
-        @keyframes swipe-left {
-          0% {
-            transform: translateX(-80px) scale(0.95);
-            opacity: 0;
+              <a
+                href={`/${option.href}`}
+                onClick={this.handleClick(option.href)}
+                aria-controls={option.href}
+                role='tab'
+                data-toggle='tab'
+              >
+                {option.title}
+              </a>
+            </li>
+          )}
+          <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
+        </ul>
+        {this.props.options.map((option, i) => (
+          <div key={i} id={option.href} className={`component ${this.state.currentComponent.href === option.href ? `show swipe-${this.state.swipe}` : ''}`}>
+            {option.component}
+          </div>
+        ))}
+        <style jsx>{`
+          .container {
+            width: 100%;
+            flex: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 1s;
           }
-          100% {
+
+          .component {
+            transition: .5s;
             transform: none;
             opacity: 1;
+            width: 100%;
+            height: 100%;
+            display: none;
           }
-        }
 
-        .component.swipe-right-in {
-          animation: swipe-right .5s ease 0s forwards;
-        }
+          .component.show {
+            display: block;
+          }
 
-        .component.swipe-right-in.delay {
-          animation-delay: .7s;
-          transform: translateX(80px) scale(0.95);
-          opacity: 0;
-        }
+          .component.swipe-left-in {
+            animation: swipe-left .5s ease 0s forwards;
+          }
 
-        @keyframes swipe-right {
-          0% {
+          .component.swipe-left-in.delay {
+            animation-delay: .7s;
+            transform: translateX(-80px) scale(0.95);
+              opacity: 0;
+          }
+
+          @keyframes swipe-left {
+            0% {
+              transform: translateX(-80px) scale(0.95);
+              opacity: 0;
+            }
+            100% {
+              transform: none;
+              opacity: 1;
+            }
+          }
+
+          .component.swipe-right-in {
+            animation: swipe-right .5s ease 0s forwards;
+          }
+
+          .component.swipe-right-in.delay {
+            animation-delay: .7s;
             transform: translateX(80px) scale(0.95);
             opacity: 0;
           }
-          100% {
-            transform: none;
-            opacity: 1;
+
+          @keyframes swipe-right {
+            0% {
+              transform: translateX(80px) scale(0.95);
+              opacity: 0;
+            }
+            100% {
+              transform: none;
+              opacity: 1;
+            }
           }
-        }
 
-        .component.swipe-up-in {
-          animation: swipe-up .5s ease 0s forwards;
-        }
+          .component.swipe-up-in {
+            animation: swipe-up .5s ease 0s forwards;
+          }
 
-        .component.swipe-up-in.delay {
-          animation-delay: .7s;
-          transform: translateY(80px) scale(0.95);
-          opacity: 0;
-        }
-
-        @keyframes swipe-up {
-          0% {
+          .component.swipe-up-in.delay {
+            animation-delay: .7s;
             transform: translateY(80px) scale(0.95);
             opacity: 0;
           }
-          100% {
-            transform: none;
-            opacity: 1;
+
+          @keyframes swipe-up {
+            0% {
+              transform: translateY(80px) scale(0.95);
+              opacity: 0;
+            }
+            100% {
+              transform: none;
+              opacity: 1;
+            }
           }
-        }
 
-        .component.swipe-left-out {
-          animation: swipe-left-out .5s ease 0s forwards;
-        }
-
-        @keyframes swipe-left-out {
-          0% {
-            transform: none;
-            opacity: 1;
+          .component.swipe-left-out {
+            animation: swipe-left-out .5s ease 0s forwards;
           }
-          100% {
-            transform: translateX(-80px) scale(0.95);
-            opacity: 0;
+
+          @keyframes swipe-left-out {
+            0% {
+              transform: none;
+              opacity: 1;
+            }
+            100% {
+              transform: translateX(-80px) scale(0.95);
+              opacity: 0;
+            }
           }
-        }
 
-        .component.swipe-right-out {
-          animation: swipe-right-out .5s ease 0s forwards;
-        }
-
-        @keyframes swipe-right-out {
-          0% {
-            transform: none;
-            opacity: 1;
+          .component.swipe-right-out {
+            animation: swipe-right-out .5s ease 0s forwards;
           }
-          100% {
-            transform: translateX(80px) scale(0.95);
-            opacity: 0;
+
+          @keyframes swipe-right-out {
+            0% {
+              transform: none;
+              opacity: 1;
+            }
+            100% {
+              transform: translateX(80px) scale(0.95);
+              opacity: 0;
+            }
           }
-        }
 
-        .component.swipe-attract {
-          animation: swipe-attract .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
-        }
-
-        @keyframes swipe-attract {
-          0% {
-            transform: none;
+          .component.swipe-attract {
+            animation: swipe-attract .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
           }
-          50% {
-            transform: translateY(-15px) scale(1.02);
+
+          @keyframes swipe-attract {
+            0% {
+              transform: none;
+            }
+            50% {
+              transform: translateY(-15px) scale(1.02);
+            }
+            100% {
+              transform: none;
+            }
           }
-          100% {
-            transform: none;
-          }
-        }
 
-        .nav {
-          width: 100%;
-          height: 7.5vh;
-          padding: 0;
-          list-style: none;
-          display: flex;   
-          flex-wrap: wrap;
-          color: white;
-          justify-content: center;
-          align-items: center;
-          transition: 1s;
-        }
-
-        .pseudo {
-          transition: 1s;
-          -webkit-flex: 1 1 50%;
-          flex: 1 1 0%;
-        }
-
-        @media screen and (max-width: 800px) {
-          .nav > .pseudo {
-            flex-grow: 1; /* Mobile devices are not very good at rendering the flexbox nav when tightly packed */
-          }
-        }
-      
-        .option {
-          transition: 1s;
-          padding: 0 10px;
-          -webkit-flex: 1 1 50%;
-          flex: 1 1 auto;
-          text-align: center;
-        }
-
-        @media screen and (max-width: 350px) {
-          .option {
+          .nav {
+            width: 100%;
+            height: 7.5vh;
             padding: 0;
+            list-style: none;
+            display: flex;   
+            flex-wrap: wrap;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
           }
-        }
 
-        a {
-          transition: 1s;
-        }
-
-        .option > a {
-          cursor: pointer;
-          text-decoration: none;
-          color: white;
-          font-family: 'Kanit', sans-serif;
-          font-size: 2.5vh;
-        }
-      
-        .option > a:link {
-          background: none;
-        }
-
-        .option > a:hover, .option > a:active, .option > a:focus {
-          font-size: 4vh;
-        }
-
-        .option.active > a {
-          font-size: 5vh;
-          color: white;
-        }
-
-        /* Allow Pseudo Elements to grow to the proper size */
-        .grow-0 {flex-grow: 0;}.grow-1 {flex-grow: 1;}.grow-2 {flex-grow: 2;}.grow-3 {flex-grow: 3;}.grow-4 {flex-grow: 4;}.grow-5 {flex-grow: 5;}.grow-6 {flex-grow: 6;}.grow-7 {flex-grow: 7;}.grow-8 {flex-grow: 8;}.grow-9 {flex-grow: 9;}.grow-10 {flex-grow: 10;}
-      `}</style>
-      <style jsx global>{`
-        .component.swipe-attract .card.linked {
-          animation: swipe-attract-card .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
-        }
-
-        @keyframes swipe-attract-card {
-          0% {
-            box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+          .pseudo {
+            transition: 1s;
+            -webkit-flex: 1 1 50%;
+            flex: 1 1 0%;
           }
-          50% {
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 2vh 2vh 0px;
+
+          @media screen and (max-width: 800px) {
+            .nav > .pseudo {
+              flex-grow: 1; /* Mobile devices are not very good at rendering the flexbox nav when tightly packed */
+            }
           }
-          100% {
-            box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+        
+          .option {
+            transition: 1s;
+            padding: 0 10px;
+            -webkit-flex: 1 1 50%;
+            flex: 1 1 auto;
+            text-align: center;
           }
-        }
-      `}</style>
-    </div>
+
+          @media screen and (max-width: 350px) {
+            .option {
+              padding: 0;
+            }
+          }
+
+          a {
+            transition: 1s;
+          }
+
+          .option > a {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-family: 'Kanit', sans-serif;
+            font-size: 2.5vh;
+          }
+        
+          .option > a:link {
+            background: none;
+          }
+
+          .option > a:hover, .option > a:active, .option > a:focus {
+            font-size: 4vh;
+          }
+
+          .option.active > a {
+            font-size: 5vh;
+            color: white;
+          }
+
+          /* Allow Pseudo Elements to grow to the proper size */
+          .grow-0 {flex-grow: 0;}.grow-1 {flex-grow: 1;}.grow-2 {flex-grow: 2;}.grow-3 {flex-grow: 3;}.grow-4 {flex-grow: 4;}.grow-5 {flex-grow: 5;}.grow-6 {flex-grow: 6;}.grow-7 {flex-grow: 7;}.grow-8 {flex-grow: 8;}.grow-9 {flex-grow: 9;}.grow-10 {flex-grow: 10;}
+        `}
+        </style>
+        <style jsx global>{`
+          .component.swipe-attract .card.linked {
+            animation: swipe-attract-card .7s cubic-bezier(0.65,0.05,0.36,1) 0s forwards;
+          }
+
+          @keyframes swipe-attract-card {
+            0% {
+              box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+            }
+            50% {
+              box-shadow: rgba(0, 0, 0, 0.2) 0px 2vh 2vh 0px;
+            }
+            100% {
+              box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0;
+            }
+          }
+        `}
+        </style>
+      </div>
+    )
   }
 }
 

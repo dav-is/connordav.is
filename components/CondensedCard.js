@@ -7,9 +7,11 @@ type Props = {
   header:(bool) => React.Node
 }
 
-const CondensedCard = (props: Props) => <Card
-  location={props.location}
-  header={props.header}
-/>
+const CondensedCard = (props: Props) => (
+  <Card
+    location={props.location}
+    header={props.header}
+  />
+)
 
 export default CondensedCard
