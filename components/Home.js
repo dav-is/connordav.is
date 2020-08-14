@@ -56,9 +56,8 @@ function Home (props: Props) {
         <div className='doubleSpacer' />
         <h1>Connor Davis</h1>
         <span className='subtitle'>
-          Web Applications Engineer with a passion in scalability, maintainability, and integration.
+          Web Applications Engineer with a passion in scalability, maintainability, and integration
         </span>
-        <div className='spacer' />
         <Nav options={options} order={order} option={option} setOption={setOption} />
         <div className='doubleSpacer' />
       </div>

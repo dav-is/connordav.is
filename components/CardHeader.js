@@ -15,7 +15,7 @@ const CardHeader = (props: Props) => (
       h3 {
         font-weight: normal;
         font-family: 'Kanit', sans-serif;
-        font-size: 3vh;
+        font-size: 2.8vh;
         margin-top: 5px;
         margin-bottom: 0;
         transition: .7s;

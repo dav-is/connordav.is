@@ -95,29 +95,27 @@ class Nav extends React.Component<Props, State> {
 
     return (
       <div className='container'>
-        <ul className='nav'>
-          <li key={0} className={`pseudo grow-${growValues.left}`} />
+        <div id='nav' role='tablist' aria-label='Section'>
+          <div key={0} aria-hidden='true' className={`pseudo grow-${growValues.left}`} />
           {this.props.order.map((option, index) =>
-            <li
+            <a
               key={index + 1}
-              index={index}
+              id={`${option}-tab`}
               className={`option ${this.state.option === option ? 'active' : ''}`}
+              aria-selected={this.state.option === option ? 'true' : 'false'}
+              href={`/${option}`}
+              onClick={this.handleClick(option)}
+              aria-controls={option}
+              role='tab'
+              data-toggle='tab'
             >
-              <a
-                href={`/${option}`}
-                onClick={this.handleClick(option)}
-                aria-controls={option}
-                role='tab'
-                data-toggle='tab'
-              >
-                {this.props.options[option].title}
-              </a>
-            </li>
+              {this.props.options[option].title}
+            </a>
           )}
-          <li key={optionsCount + 1} className={`pseudo grow-${growValues.right}`} />
-        </ul>
+          <div key={optionsCount + 1} className={`pseudo grow-${growValues.right}`} />
+        </div>
         {this.props.order.map((option, i) => (
-          <div key={i} id={option} className={`component ${this.state.option === option ? `show swipe-${this.state.swipe}` : ''}`}>
+          <div key={i} id={option} role='tabpanel' aria-labelledby={`${option}-tab`} className={`component ${this.state.option === option ? `show swipe-${this.state.swipe}` : ''}`} hidden={this.state.option === option ? undefined : true}>
             {this.props.options[option].component}
           </div>
         ))}
@@ -253,10 +251,10 @@ class Nav extends React.Component<Props, State> {
             }
           }
 
-          .nav {
+          #nav {
             width: 100%;
-            height: 7.5vh;
             padding: 0;
+            margin-top: 15px;
             list-style: none;
             display: flex;   
             flex-wrap: wrap;
@@ -273,17 +271,22 @@ class Nav extends React.Component<Props, State> {
           }
 
           @media screen and (max-width: 800px) {
-            .nav > .pseudo {
+            #nav > .pseudo {
               flex-grow: 1; /* Mobile devices are not very good at rendering the flexbox nav when tightly packed */
             }
           }
         
           .option {
             transition: 1s;
-            padding: 0 10px;
+            padding: 0 20px;
             -webkit-flex: 1 1 50%;
             flex: 1 1 auto;
             text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-family: 'Kanit', sans-serif;
+            font-size: 3.5vh;
           }
 
           @media screen and (max-width: 350px) {
@@ -295,25 +298,17 @@ class Nav extends React.Component<Props, State> {
           a {
             transition: 1s;
           }
-
-          .option > a {
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            font-family: 'Kanit', sans-serif;
-            font-size: 2.5vh;
-          }
         
-          .option > a:link {
+          .option:link {
             background: none;
           }
 
-          .option > a:hover, .option > a:active, .option > a:focus {
+          .option:hover, .option:active, .option:focus {
             font-size: 4vh;
           }
 
-          .option.active > a {
-            font-size: 5vh;
+          .option.active {
+            font-size: 6.5vh;
             color: white;
           }
 

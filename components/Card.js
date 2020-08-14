@@ -121,7 +121,6 @@ class Card extends React.Component<Props, State> {
             right: 1.5vh !important;
             height: 96vh !important;
             padding: 2vh 4vh;
-            width: 97%;
           }
 
           .card.clone {
