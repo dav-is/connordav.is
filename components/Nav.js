@@ -308,7 +308,7 @@ class Nav extends React.Component<Props, State> {
           }
 
           .option.active {
-            font-size: 6.5vh;
+            font-size: 6vh;
             color: white;
           }
 
