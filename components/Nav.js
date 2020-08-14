@@ -287,6 +287,7 @@ class Nav extends React.Component<Props, State> {
             color: white;
             font-family: 'Kanit', sans-serif;
             font-size: 3.5vh;
+            opacity: 0.95;
           }
 
           @media screen and (max-width: 350px) {
@@ -310,6 +311,7 @@ class Nav extends React.Component<Props, State> {
           .option.active {
             font-size: 6vh;
             color: white;
+            opacity: 1;
           }
 
           /* Allow Pseudo Elements to grow to the proper size */
