@@ -44,15 +44,15 @@ describe('The Home Page', function () {
   it('can navigate back to Projects', function () {
     cy.visit('/art')
     cy.contains('Projects').click()
-    cy.url().should('include', '/projects')
+    cy.url().should('be', '/')
 
     cy.visit('/open-source')
     cy.contains('Projects').click()
-    cy.url().should('include', '/projects')
+    cy.url().should('be', '/')
 
     cy.visit('/origin')
     cy.contains('Projects').click()
-    cy.url().should('include', '/projects')
+    cy.url().should('be', '/')
   })
 
   it('can click on each Project', function () {

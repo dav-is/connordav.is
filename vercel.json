@@ -1,12 +1,7 @@
 {
   "version": 2,
-  "name": "personal",
-  "alias": ["www.connordav.is"],
   "headers": [
     { "source": "/:path*", "headers": [{ "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload;" }] }
-  ],
-  "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
   ],
   "cleanUrls": true,
   "trailingSlash": false
