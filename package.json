@@ -7,19 +7,16 @@
   "scripts": {
     "dev": "next",
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
-    "serve": "yarn export && yarn start",
-    "start": "serve -l 3000 -n dist",
+    "serve": "yarn build && yarn start",
+    "start": "next start",
     "build": "next build",
-    "export": "yarn build && next export -o dist",
     "test": "yarn lint && yarn cy:headless",
-    "lint": "flow && eslint ./ *.js",
+    "lint": "flow && eslint ./",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect && yarn snyk-protect",
-    "now-build": "yarn export",
-    "now-dev": "next"
+    "prepare": "npm run snyk-protect && yarn snyk-protect"
   },
   "dependencies": {
     "next": "^9.5.2",

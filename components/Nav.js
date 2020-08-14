@@ -1,36 +1,27 @@
 // @flow
 import * as React from 'react'
 import Router from 'next/router'
-
-export type Option = {
-  title: string,
-  href: string,
-  background: string,
-  component: React.Node
-}
+import type { Options, OptionKey } from './Home'
 
 type Props = {
-  options: Array<Option>,
-  initialOption: string,
-  changeBackground:(string) => void
+  options: Options,
+  option: OptionKey,
+  order: OptionKey[],
+  setOption:((OptionKey => OptionKey) | OptionKey) => void
 }
 
 type State = {
   swipe: string,
-  currentOption: Option,
-  currentComponent: Option
+  option: OptionKey
 }
 
 class Nav extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
-    const currentOption = this.props.options.find(option => option.href === props.initialOption) || this.props.options[0]
-
     this.state = {
       swipe: 'up-in delay',
-      currentOption,
-      currentComponent: currentOption
+      option: props.option
     }
   }
 
@@ -45,23 +36,23 @@ class Nav extends React.Component<Props, State> {
     }
   }
 
-  getIndex (href: string) {
-    return this.props.options.findIndex(option => option.href === href)
+  getIndex (key: string) {
+    return this.props.order.findIndex(option => option === key)
   }
 
-  handleClick (name: string) {
+  handleClick (name: OptionKey) {
     return (e: SyntheticEvent<HTMLAnchorElement>): void => {
       e.preventDefault()
       e.stopPropagation()
 
-      const currentOption = this.props.options.find(option => option.href === name)
-      if (!currentOption) {
+      const option = this.props.options[name]
+      if (!option) {
         console.error(`Option with name ${name} does not exist.`)
         return
       }
 
-      const proposedIndex = this.getIndex(currentOption.href)
-      const currentIndex = this.getIndex(this.state.currentOption.href)
+      const proposedIndex = this.getIndex(name)
+      const currentIndex = this.getIndex(this.props.option)
 
       if (proposedIndex === currentIndex) {
         this.setState({
@@ -77,21 +68,20 @@ class Nav extends React.Component<Props, State> {
 
       const movingLeft = proposedIndex > currentIndex || false
 
-      this.props.changeBackground(currentOption.background)
+      this.props.setOption(name)
 
       Router.push({
         pathname: '/',
-        query: { option: currentOption.href }
-      }, `/${currentOption.href}`, { shallow: true })
+        query: { option: name }
+      }, `/${name === 'projects' ? '' : name}`, { shallow: true })
 
       this.setState({
         swipe: `${movingLeft ? 'left' : 'right'}-out`,
-        currentOption
+        option: name
       })
 
       setTimeout(() => {
         this.setState({
-          currentComponent: currentOption,
           swipe: `${movingLeft ? 'right' : 'left'}-in`
         })
       }, 500)
@@ -100,34 +90,35 @@ class Nav extends React.Component<Props, State> {
 
   // TODO: Figure out ARIA roles - use role='menu'
   render () {
-    const growValues = Nav.growValues(this.props.options.length, this.getIndex(this.state.currentOption.href))
+    const optionsCount = this.props.order.length
+    const growValues = Nav.growValues(optionsCount, this.getIndex(this.state.option))
 
     return (
       <div className='container'>
         <ul className='nav'>
           <li key={0} className={`pseudo grow-${growValues.left}`} />
-          {this.props.options.map((option, index) =>
+          {this.props.order.map((option, index) =>
             <li
               key={index + 1}
               index={index}
-              className={`option ${this.state.currentOption.href === option.href ? 'active' : ''}`}
+              className={`option ${this.state.option === option ? 'active' : ''}`}
             >
               <a
-                href={`/${option.href}`}
-                onClick={this.handleClick(option.href)}
-                aria-controls={option.href}
+                href={`/${option}`}
+                onClick={this.handleClick(option)}
+                aria-controls={option}
                 role='tab'
                 data-toggle='tab'
               >
-                {option.title}
+                {this.props.options[option].title}
               </a>
             </li>
           )}
-          <li key={this.props.options.length + 1} className={`pseudo grow-${growValues.right}`} />
+          <li key={optionsCount + 1} className={`pseudo grow-${growValues.right}`} />
         </ul>
-        {this.props.options.map((option, i) => (
-          <div key={i} id={option.href} className={`component ${this.state.currentComponent.href === option.href ? `show swipe-${this.state.swipe}` : ''}`}>
-            {option.component}
+        {this.props.order.map((option, i) => (
+          <div key={i} id={option} className={`component ${this.state.option === option ? `show swipe-${this.state.swipe}` : ''}`}>
+            {this.props.options[option].component}
           </div>
         ))}
         <style jsx>{`
