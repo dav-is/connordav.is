@@ -22,7 +22,7 @@
     "next": "^9.5.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "snyk": "^1.414.1"
+    "snyk": "^1.416.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
