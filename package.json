@@ -29,7 +29,7 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "cypress": "^5.5.0",
     "eslint": "^7.12.1",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard": "^15.0.1",
     "eslint-config-standard-flow": "^1.0.1",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-cypress": "^2.11.2",
