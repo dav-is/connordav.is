@@ -40,7 +40,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-standard": "^5.0.0",
     "flow-bin": "^0.140.0",
-    "husky": "^4.3.5",
+    "husky": "^4.3.6",
     "serve": "^11.3.2",
     "start-server-and-test": "^1.11.6"
   },
