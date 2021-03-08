@@ -19,7 +19,7 @@
     "prepare": "npm run snyk-protect && yarn snyk-protect"
   },
   "dependencies": {
-    "next": "^10.0.7",
+    "next": "^10.0.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "snyk": "^1.472.0"
