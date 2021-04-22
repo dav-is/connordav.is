@@ -5,6 +5,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
+          executor: cypress/base-12
           start: 'npm run serve'
           no-workspace: true
           yarn: true
