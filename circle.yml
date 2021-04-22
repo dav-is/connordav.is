@@ -1,10 +1,11 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1.26.0
+  cypress: cypress-io/cypress@1.27.0
 workflows:
   build:
     jobs:
       - cypress/run:
+          executor: cypress/base-12
           start: 'npm run serve'
           no-workspace: true
           yarn: true
