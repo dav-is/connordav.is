@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "cypress": "^6.8.0",
+    "cypress": "^7.1.0",
     "eslint": "^7.24.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-flow": "^1.0.1",
