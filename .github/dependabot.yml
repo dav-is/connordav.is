@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: snyk
+    versions:
+    - 1.441.0
+    - 1.445.0
+    - 1.487.0
+    - 1.512.0
+    - 1.560.0
+    - 1.564.0
+    - 1.567.0
+    - 1.571.0
+  - dependency-name: cypress
+    versions:
+    - 7.0.0
+    - 7.0.1
