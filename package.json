@@ -42,7 +42,7 @@
     "flow-bin": "^0.149.0",
     "husky": "^6.0.0",
     "serve": "^11.3.2",
-    "start-server-and-test": "^1.12.1"
+    "start-server-and-test": "^1.12.4"
   },
   "husky": {
     "hooks": {
