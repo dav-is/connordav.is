@@ -3,7 +3,7 @@ module.exports = {
     return {
       beforeFiles: [
         {
-          source: '/_matrix/?',
+          source: '/_matrix',
           destination: 'https://matrix.connordav.is/_matrix'
         },
         {
