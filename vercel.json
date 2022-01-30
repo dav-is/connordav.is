@@ -1,6 +1,7 @@
 {
   "version": 2,
   "headers": [
+    { "source": "/:path*", "headers": [{ "key": "access-control-allow-origin", "value": "https://app.element.io" }] },
     { "source": "/:path*", "headers": [{ "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload;" }] }
   ],
   "cleanUrls": true,
