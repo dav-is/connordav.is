@@ -4,11 +4,11 @@ module.exports = {
       beforeFiles: [
         {
           source: '/_matrix',
-          destination: 'https://origin.connordav.is/'
+          destination: 'https://matrix.connordav.is/'
         },
         {
           source: '/_matrix/:path*',
-          destination: 'https://origin.connordav.is/:path*'
+          destination: 'https://matrix.connordav.is/:path*'
         }
       ]
     }
