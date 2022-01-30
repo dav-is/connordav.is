@@ -3,12 +3,12 @@ module.exports = {
     return {
       beforeFiles: [
         {
-          source: '/_matrix',
-          destination: 'https://matrix.connordav.is/'
+          source: '/_matrix/?',
+          destination: 'https://matrix.connordav.is/_matrix'
         },
         {
           source: '/_matrix/:path*',
-          destination: 'https://matrix.connordav.is/:path*'
+          destination: 'https://matrix.connordav.is/_matrix/:path*'
         }
       ]
     }
