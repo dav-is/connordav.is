@@ -15,8 +15,6 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect && yarn snyk-protect"
   },
   "dependencies": {
     "next": "^10.2.3",
