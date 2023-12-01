@@ -14,7 +14,7 @@
     "lint": "flow && eslint ./",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
+    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
   },
   "dependencies": {
     "next": "^10.2.3",
