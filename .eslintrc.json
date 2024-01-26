@@ -1,10 +1,14 @@
 {
   "parser": "babel-eslint",
-  "extends": ["standard", "standard-flow", "standard-react", "plugin:jsx-a11y/strict"],
+  "extends": [
+    "standard",
+    "standard-flow",
+    "standard-react",
+    "plugin:jsx-a11y/strict"
+  ],
   "rules": {
-    "standard/no-callback-literal": 0
+    "standard/no-callback-literal": 0,
+    "no-unused-vars": 0
   },
-  "plugins": [
-    "jsx-a11y"
-  ]
+  "plugins": ["jsx-a11y"]
 }

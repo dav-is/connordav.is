@@ -4,3 +4,4 @@ dist
 cypress/screenshots
 cypress/videos
 .vercel
+.yarn
