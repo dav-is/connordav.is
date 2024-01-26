@@ -5,5 +5,5 @@ workflows:
   use-my-orb:
     jobs:
       - cypress/run:
-          package-manager: yarn
+          package-manager: yarn-berry
           start-command: yarn serve
