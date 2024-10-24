@@ -15,7 +15,7 @@ const Layout = (props: Props) => (
       <meta name='keywords' content='HTML, CSS, JavaScript, Web, Applications, HTTP' />
       <meta name='author' content='Connor Davis' />
       <meta content='width=device-width, initial-scale=1' name='viewport' />
-      <link href='https://fonts.gstatic.com' rel='preconnect' crossOrigin='true' />
+      <link href='https://fonts.gstatic.com' rel='preconnect' crossOrigin='anonymous' />
       <link href='https://fonts.gstatic.com' rel='dns-prefetch' />
       <link href='https://fonts.googleapis.com/css?family=Kanit:600|Open+Sans' rel='stylesheet' />
     </Head>

@@ -16,7 +16,7 @@ const Childhood = () => (
       <div>
         <p className='animate'>
           From a young age, I had always been interested in computers.
-          At 13, I created my stepmother's local insurance company website in Adobe Dreamweaver.
+          At 13, I created my stepmother&apos;s local insurance company website in Adobe Dreamweaver.
           I built my own computer from scratch and set up a local LAMP server in my basement.
         </p>
         <p className='animate d-1'>

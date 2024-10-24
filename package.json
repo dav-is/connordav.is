@@ -5,46 +5,41 @@
   "license": "MIT",
   "author": "Connor Davis",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev --turbopack",
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
     "serve": "yarn build && yarn start",
     "start": "next start",
     "build": "next build",
     "test": "yarn lint && yarn cy:headless",
-    "lint": "flow && eslint ./",
+    "lint": "next lint",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
   },
   "dependencies": {
-    "next": "^14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "15.0.1",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "@types/eslint-plugin-jsx-a11y": "^6",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
     "cypress": "^7.5.0",
-    "eslint": "^7.28.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-config-standard-flow": "^1.0.1",
-    "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-cypress": "^2.11.3",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "flow-bin": "^0.152.0",
+    "eslint": "^9.13.0",
+    "eslint-config-next": "15.0.1",
+    "eslint-plugin-jsx-a11y": "^6.10.1",
     "husky": "^6.0.0",
     "serve": "^12.0.0",
-    "start-server-and-test": "^1.12.5"
+    "start-server-and-test": "^1.12.5",
+    "typescript": "^5.6.3"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm test"
     }
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.0.2",
+  "resolutions": {
+    "@types/react": "npm:types-react@19.0.0-rc.1"
+  }
 }
