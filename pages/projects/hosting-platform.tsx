@@ -1,17 +1,16 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/OpenSource'
+import { background } from '../../subsections/Projects'
 
-export const header = (expanded: bool) => (
-  <CardHeader isLarge={expanded} title='Flarum Forum Software'>
+export const header = (expanded: boolean) => (
+  <CardHeader isLarge={expanded} title='Hosting Platform'>
     Coming soon...
   </CardHeader>
 )
 
-const Flarum = () => (
+const HostingPlatform = () => (
   <Layout background={background}>
     <ExpandedCard header={header}>
       <div>
@@ -77,4 +76,4 @@ const Flarum = () => (
   </Layout>
 )
 
-export default Flarum
+export default HostingPlatform

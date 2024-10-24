@@ -1,17 +1,16 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Projects'
+import { background } from '../../subsections/OpenSource'
 
-export const header = (expanded: bool) => (
-  <CardHeader isLarge={expanded} title='Authenticity Platform'>
+export const header = (expanded: boolean) => (
+  <CardHeader isLarge={expanded} title='React PWA'>
     Coming soon...
   </CardHeader>
 )
 
-const AuthenticityPlatform = () => (
+const ReactPWA = () => (
   <Layout background={background}>
     <ExpandedCard header={header}>
       <div>
@@ -77,4 +76,4 @@ const AuthenticityPlatform = () => (
   </Layout>
 )
 
-export default AuthenticityPlatform
+export default ReactPWA

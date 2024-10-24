@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Cards from '../components/Cards'
 import CondensedCard from '../components/CondensedCard'
 import { backgrounds } from '../helpers/constants'

@@ -1,11 +1,10 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import { BackgroundContext } from '../helpers/context'
 
 type Props = {
-  children: React.Node,
+  children: React.ReactNode,
   background: string
-}
+};
 
 const Cards = (props: Props) => (
   <BackgroundContext.Provider value={props.background}>

@@ -1,11 +1,10 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 
 type Props = {
-  isLarge?: bool,
+  isLarge?: boolean,
   title: string,
-  children: React.Node
-}
+  children: React.ReactNode
+};
 
 const CardHeader = (props: Props) => (
   <div>

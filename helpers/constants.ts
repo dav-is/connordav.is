@@ -1,4 +1,3 @@
-// @flow
 export const backgrounds = {
   defaultKey: 'blue',
   red: {
@@ -21,4 +20,4 @@ export const backgrounds = {
     key: 'grey',
     hex: '#263238'
   }
-}
+} as const;

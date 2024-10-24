@@ -1,24 +1,24 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Origin'
+import { background } from '../../subsections/OpenSource'
 
-export const header = (expanded: bool) => (
-  <CardHeader isLarge={expanded} title='Childhood Experiences'>
+export const header = (expanded: boolean) => (
+  <CardHeader isLarge={expanded} title='Flarum Forum Software'>
     Coming soon...
   </CardHeader>
 )
 
-const Childhood = () => (
+const Flarum = () => (
   <Layout background={background}>
     <ExpandedCard header={header}>
       <div>
         <p className='animate'>
-          From a young age, I had always been interested in computers.
-          At 13, I created my stepmother's local insurance company website in Adobe Dreamweaver.
-          I built my own computer from scratch and set up a local LAMP server in my basement.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Phasellus sapien mi, dignissim vel condimentum eu, auctor id erat.
+          Donec id ornare lectus, sagittis mattis dolor. Vivamus nec dapibus nisl.
+          Nam sed molestie arcu. Pellentesque sed porttitor ante.
         </p>
         <p className='animate d-1'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -76,4 +76,4 @@ const Childhood = () => (
   </Layout>
 )
 
-export default Childhood
+export default Flarum

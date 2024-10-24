@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Home from '../components/Home'
 
 function Art () {

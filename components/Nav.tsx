@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Router from 'next/router'
 import type { Options, OptionKey } from './Home'
 
@@ -7,13 +6,13 @@ type Props = {
   options: Options,
   option: OptionKey,
   order: OptionKey[],
-  setOption:((OptionKey => OptionKey) | OptionKey) => void
-}
+  setOption: (arg1: ((arg1: OptionKey) => OptionKey) | OptionKey) => void
+};
 
 type State = {
   swipe: string,
   option: OptionKey
-}
+};
 
 class Nav extends React.Component<Props, State> {
   constructor (props: Props) {
@@ -25,7 +24,10 @@ class Nav extends React.Component<Props, State> {
     }
   }
 
-  static growValues (optionsLength: number, currentIndex: number): {right: number, left: number} {
+  static growValues(optionsLength: number, currentIndex: number): {
+    right: number,
+    left: number
+  } {
     const offsetCount = optionsLength - 1
     const pseudoCount = 2
     const right = Math.round(optionsLength * (currentIndex / offsetCount)) + pseudoCount
@@ -41,7 +43,7 @@ class Nav extends React.Component<Props, State> {
   }
 
   handleClick (name: OptionKey) {
-    return (e: SyntheticEvent<HTMLAnchorElement>): void => {
+    return (e: React.SyntheticEvent<HTMLAnchorElement>): void => {
       e.preventDefault()
       e.stopPropagation()
 
@@ -85,7 +87,7 @@ class Nav extends React.Component<Props, State> {
           swipe: `${movingLeft ? 'right' : 'left'}-in`
         })
       }, 500)
-    }
+    };
   }
 
   // TODO: Figure out ARIA roles - use role='menu'

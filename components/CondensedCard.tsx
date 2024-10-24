@@ -1,11 +1,10 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Card from '../components/Card'
 
 type Props = {
   location: string,
-  header:(bool) => React.Node
-}
+  header: (arg1: boolean) => React.ReactElement
+};
 
 const CondensedCard = (props: Props) => (
   <Card

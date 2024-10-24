@@ -1,12 +1,11 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Head from 'next/head'
 import { backgrounds } from '../helpers/constants'
 
 type Props = {
-  children: React.Node,
+  children: React.ReactNode,
   background: string
-}
+};
 
 const Layout = (props: Props) => (
   <div className={`background background-color-${props.background}`}>

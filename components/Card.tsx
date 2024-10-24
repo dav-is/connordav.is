@@ -1,26 +1,29 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Router from 'next/router'
 import { BackgroundContext } from '../helpers/context'
 
-type Animation = 'condensed' | 'cloned' | 'expanding' | 'expanded'
+type Animation = 'condensed' | 'cloned' | 'expanding' | 'expanded';
 
 type Props = {
-  expanded?: bool,
-  header:(bool) => React.Node,
-  children?: React.Node,
+  expanded?: boolean,
+  header: (arg1: boolean) => React.ReactElement,
+  children?: React.ReactNode,
   location?: string,
   initAnimation?: Animation
-}
+};
 
 type State = {
   animation: Animation
-}
+};
 
 class Card extends React.Component<Props, State> {
-  card: { current: null | HTMLAnchorElement }
+  card: {
+    current: null | HTMLAnchorElement
+  };
 
-  clone: { current: null | HTMLDivElement }
+  clone: {
+    current: null | HTMLDivElement
+  };
 
   constructor (props: Props) {
     super(props)
@@ -33,7 +36,7 @@ class Card extends React.Component<Props, State> {
   }
 
   handleClick (location: string) {
-    return (e: SyntheticEvent<HTMLAnchorElement>) => {
+    return (e: React.SyntheticEvent<HTMLAnchorElement>) => {
       e.preventDefault()
       e.stopPropagation()
 
@@ -48,7 +51,7 @@ class Card extends React.Component<Props, State> {
         setTimeout(() => this.setState({ animation: 'expanding' }), 0)
         setTimeout(() => Router.push(location), 1000)
       }
-    }
+    };
   }
 
   render () {

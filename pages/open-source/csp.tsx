@@ -1,17 +1,16 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/Projects'
+import { background } from '../../subsections/OpenSource'
 
-export const header = (expanded: bool) => (
-  <CardHeader isLarge={expanded} title='Hosting Platform'>
+export const header = (expanded: boolean) => (
+  <CardHeader isLarge={expanded} title='Content Security Policy'>
     Coming soon...
   </CardHeader>
 )
 
-const HostingPlatform = () => (
+const CSP = () => (
   <Layout background={background}>
     <ExpandedCard header={header}>
       <div>
@@ -77,4 +76,4 @@ const HostingPlatform = () => (
   </Layout>
 )
 
-export default HostingPlatform
+export default CSP

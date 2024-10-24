@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../components/Layout'
 import Origin, { background as OriginBackground } from '../subsections/Origin'
 import Projects, { background as ProjectsBackground } from '../subsections/Projects'
@@ -7,14 +6,14 @@ import OpenSource, { background as OpenSourceBackground } from '../subsections/O
 import Art, { background as ArtBackground } from '../subsections/Art'
 import Nav from '../components/Nav'
 
-export type OptionKey = 'origin' | 'projects' | 'open-source' | 'art'
+export type OptionKey = 'origin' | 'projects' | 'open-source' | 'art';
 export type Option = {
   title: string,
   href: OptionKey,
   background: string,
-  component: React.Node
-}
-export type Options = { [OptionKey]: Option }
+  component: React.ReactNode
+};
+export type Options = Partial<Record<OptionKey, Option>>;
 const options: Options = {
   origin: {
     title: 'Origin',
@@ -45,7 +44,7 @@ const order: OptionKey[] = ['origin', 'projects', 'open-source', 'art']
 
 type Props = {
   option: OptionKey
-}
+};
 
 function Home (props: Props) {
   const [option, setOption] = React.useState(props.option)

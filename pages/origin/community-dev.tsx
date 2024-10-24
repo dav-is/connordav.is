@@ -1,25 +1,23 @@
-// @flow
-import * as React from 'react'
+import * as React from 'react';
 import Layout from '../../components/Layout'
 import CardHeader from '../../components/CardHeader'
 import ExpandedCard from '../../components/ExpandedCard'
-import { background } from '../../subsections/OpenSource'
+import { background } from '../../subsections/Origin'
 
-export const header = (expanded: bool) => (
-  <CardHeader isLarge={expanded} title='React PWA'>
+export const header = (expanded: boolean) => (
+  <CardHeader isLarge={expanded} title='Community Development'>
     Coming soon...
   </CardHeader>
 )
 
-const ReactPWA = () => (
+const CommunityDev = () => (
   <Layout background={background}>
     <ExpandedCard header={header}>
       <div>
         <p className='animate'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus sapien mi, dignissim vel condimentum eu, auctor id erat.
-          Donec id ornare lectus, sagittis mattis dolor. Vivamus nec dapibus nisl.
-          Nam sed molestie arcu. Pellentesque sed porttitor ante.
+          I was involved in a few online communities that used Simple Machine Forums (a relic today).
+          A group with over a thousand members recruited me to join their web development team.
+          From there, I began administrating forums and creating group organization tools.
         </p>
         <p className='animate d-1'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -77,4 +75,4 @@ const ReactPWA = () => (
   </Layout>
 )
 
-export default ReactPWA
+export default CommunityDev
