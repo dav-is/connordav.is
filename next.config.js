@@ -23,12 +23,12 @@ module.exports = {
     return [
       {
         source: '/\\.well-known/matrix/client.json',
-        destination: '/api/matrix/client',
+        destination: '/.well-known/matrix/client',
         permanent: true,
       },
       {
         source: '/\\.well-known/matrix/server.json',
-        destination: '/api/matrix/server',
+        destination: '/.well-known/matrix/server',
         permanent: true,
       },
     ]
