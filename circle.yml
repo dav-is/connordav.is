@@ -1,9 +1,20 @@
-version: '2.1'
+version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
+jobs:
+  run-cypress:
+    executor:
+      name: cypress/default
+      node-version: "lts"
+    steps:
+      - cypress/install:
+          package-manager: "pnpm"
+          post-install: "pnpm run build"
+      - cypress/run-tests:
+          start-command: "pnpm run start"
+          cypress-command: "pnpm run cy:run"
 workflows:
-  use-my-orb:
+  cypress:
     jobs:
-      - cypress/run:
-          package-manager: yarn-berry
-          start-command: yarn serve
+      - run-cypress:
+          name: Run Cypress

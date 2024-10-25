@@ -7,10 +7,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "devT": "start-server-and-test dev http://localhost:3000 cy:open",
-    "serve": "yarn build && yarn start",
+    "serve": "pnpm run build && pnpm run start",
     "start": "next start",
     "build": "next build",
-    "test": "yarn lint && yarn cy:headless",
+    "test": "pnpm run lint && pnpm run cy:headless",
     "lint": "next lint",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
@@ -39,8 +39,8 @@
       "pre-commit": "npm test"
     }
   },
-  "packageManager": "yarn@4.0.2",
   "resolutions": {
     "@types/react": "npm:types-react@19.0.0-rc.1"
-  }
+  },
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
