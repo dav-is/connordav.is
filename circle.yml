@@ -2,19 +2,18 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 jobs:
-  cypress/run:
+  run-cypress:
     executor:
       name: cypress/default
       node-version: "lts"
     steps:
       - cypress/install:
-          package-manager: "yarn"
+          package-manager: "yarn-berry"
       - cypress/run-tests:
           start-command: "yarn run serve"
           cypress-command: "yarn run cy:run"
 workflows:
-  use-my-orb:
+  cypress:
     jobs:
-      - cypress/run:
-          package-manager: yarn-berry
+      - run-cypress:
           name: Run Cypress
