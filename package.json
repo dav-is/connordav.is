@@ -14,7 +14,8 @@
     "lint": "next lint",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run"
+    "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "15.0.1",
@@ -33,11 +34,6 @@
     "serve": "^14.2.4",
     "start-server-and-test": "^2.0.8",
     "typescript": "^5.6.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
   },
   "resolutions": {
     "@types/react": "npm:types-react@19.0.0-rc.1"
