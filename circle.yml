@@ -10,8 +10,8 @@ jobs:
       - cypress/install:
           package-manager: "pnpm"
       - cypress/run-tests:
-          start-command: "yarn run serve"
-          cypress-command: "yarn run cy:run"
+          start-command: "pnpm run serve"
+          cypress-command: "pnpm run cy:run"
 workflows:
   cypress:
     jobs:
