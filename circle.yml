@@ -10,6 +10,7 @@ jobs:
       - cypress/install:
           package-manager: "yarn-berry"
       - cypress/run-tests:
+          package-manager: "yarn-berry"
           start-command: "yarn run serve"
           cypress-command: "yarn run cy:run"
 workflows:
