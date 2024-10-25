@@ -12,7 +12,7 @@ jobs:
           post-install: "pnpm run build"
       - cypress/run-tests:
           start-command: "pnpm run start"
-          cypress-command: "pnpm run cy:run"
+          cypress-command: "pnpm run cy:run-record"
 workflows:
   cypress:
     jobs:
