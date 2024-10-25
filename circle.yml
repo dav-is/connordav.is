@@ -9,8 +9,11 @@ jobs:
     steps:
       - cypress/install:
           package-manager: "pnpm"
+      - build:
+          name: Build
+          command: "pnpm run build"
       - cypress/run-tests:
-          start-command: "pnpm run serve"
+          start-command: "pnpm run start"
           cypress-command: "pnpm run cy:run"
 workflows:
   cypress:
