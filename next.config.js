@@ -6,7 +6,17 @@ module.exports = {
     return [
       {
         source: '/\\.well-known/matrix/:path*',
-        headers: [{ key: 'access-control-allow-origin', value: '*' }],
+        headers: [
+          { key: 'access-control-allow-origin', value: '*' },
+          { key: 'cache-control', value: 'public, max-age=604800' },
+        ],
+      },
+      {
+        source: '/\\.well-known/openpgpkey/:path*',
+        headers: [
+          { key: 'access-control-allow-origin', value: '*' },
+          { key: 'cache-control', value: 'public, max-age=604800' },
+        ],
       },
       {
         source: '/:path*',
