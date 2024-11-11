@@ -45,6 +45,10 @@ class Card extends React.Component<Props, State> {
 
       if (this.state.animation === 'condensed' && this.card.current) {
         this.setState({ animation: 'hidden' }, () => {
+          if (!this.card.current) {
+            return
+          }
+
           const { height, top, left } =
             this.card.current.getBoundingClientRect()
 
