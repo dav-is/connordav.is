@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
     "@types/react": "19.0.8",
-    "@vercel/analytics": "^1.4.1",
+    "@vercel/analytics": "^1.5.0",
     "cypress": "^14.0.3",
     "eslint": "^9.19.0",
     "eslint-config-next": "15.1.6",
