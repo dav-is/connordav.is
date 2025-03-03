@@ -14,7 +14,7 @@
     "lint": "next lint",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:run-record": "cypress run --record",
+    "cy:run-record": "cypress run --record --parallel",
     "cy:headless": "start-server-and-test serve http://localhost:3000 cy:run",
     "prepare": "husky"
   },
