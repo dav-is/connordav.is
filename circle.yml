@@ -13,7 +13,6 @@ jobs:
       - cypress/run-tests:
           start-command: "pnpm run start"
           cypress-command: "pnpm run cy:run-record"
-          parallelism: 4
 workflows:
   cypress:
     jobs:
