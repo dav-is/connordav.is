@@ -12,6 +12,7 @@ type Props = {
 type State = {
   swipe: string
   option: OptionKey
+  earlyOption?: OptionKey
 }
 
 class Nav extends React.Component<Props, State> {
@@ -87,12 +88,14 @@ class Nav extends React.Component<Props, State> {
 
       this.setState({
         swipe: `${movingLeft ? 'left' : 'right'}-out`,
-        option: name,
+        earlyOption: name,
       })
 
       setTimeout(() => {
         this.setState({
           swipe: `${movingLeft ? 'right' : 'left'}-in`,
+          earlyOption: undefined,
+          option: name,
         })
       }, 500)
     }
@@ -103,7 +106,7 @@ class Nav extends React.Component<Props, State> {
     const optionsCount = this.props.order.length
     const growValues = Nav.growValues(
       optionsCount,
-      this.getIndex(this.state.option)
+      this.getIndex(this.state.earlyOption || this.state.option)
     )
 
     return (
@@ -120,8 +123,16 @@ class Nav extends React.Component<Props, State> {
               id={`${option}-tab`}
               className={`option${
                 this.props.options[option].title.length > 8 ? ' long' : ''
-              }${this.state.option === option ? ' active' : ''}`}
-              aria-selected={this.state.option === option ? 'true' : 'false'}
+              }${
+                (this.state.earlyOption || this.state.option) === option
+                  ? ' active'
+                  : ''
+              }`}
+              aria-selected={
+                (this.state.earlyOption || this.state.option) === option
+                  ? 'true'
+                  : 'false'
+              }
               href={`/${option}`}
               onClick={this.handleClick(option)}
               aria-controls={option}
