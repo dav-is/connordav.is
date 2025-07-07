@@ -29,7 +29,7 @@
     "@vercel/analytics": "^1.5.0",
     "cypress": "^14.5.1",
     "eslint": "^9.29.0",
-    "eslint-config-next": "15.3.4",
+    "eslint-config-next": "15.3.5",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "serve": "^14.2.4",
     "start-server-and-test": "^2.0.12",
