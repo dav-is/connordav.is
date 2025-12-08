@@ -20,12 +20,12 @@
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
     "next": "16.0.1",
-    "react": "^19.1.0",
+    "react": "^19.2.1",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.2.7",
     "@vercel/analytics": "^1.5.0",
     "cypress": "^14.5.2",
     "eslint": "^9.31.0",
